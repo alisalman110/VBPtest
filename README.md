@@ -1,5 +1,8 @@
 # Veeam Best Practices Guide
 
+* [Anatomy](anatomy/README.md)
+  * [Hyper-V](anatomy/hyper-v/README.md)
+    * [Interaction with Hyper-V](anatomy/hyper-v/interaction.md)
 * [Planning and Preparation](planning/README.md)
 * [Deployment and Configuration](deployment/README.md)
   * [Database](deployment/database.md)
