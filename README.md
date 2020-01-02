@@ -13,6 +13,7 @@
     * [Scale-out Backup Repositories](deployment/backup_repositories/scaleout.md)
     * [Capacity Tier](deployment/backup_repositories/capacity_tier.md)
   * [Tape Servers](deployment/tape_servers.md)
+  * [Network Rules](deployment/network_rules.md)
 * [Operations](operations/README.md)
   * [Backup Jobs](operations/backup_jobs/README.md)
   * [Backup Copy Jobs](operations/backup_copy_jobs/README.md)
