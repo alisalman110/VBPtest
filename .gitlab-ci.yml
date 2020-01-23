@@ -1,0 +1,12 @@
+image: golang
+
+variables:
+  GO111MODULE: "on"
+
+before_script:
+  - go get -u github.com/raviqqe/liche
+
+check_links:
+  script:
+  - liche -r -v README.md
+  
