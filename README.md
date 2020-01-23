@@ -24,3 +24,4 @@
   * [Applications](operations/applications/README.md)
     * [Microsoft Exchange](operations/applications/exchange.md)
     * [MS SQL Server](operations/applications/mssql_server.md)
+    * [Microsoft SharePoint](operations/applications/sharepoint.md)
