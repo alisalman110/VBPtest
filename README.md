@@ -22,4 +22,5 @@
   * [Backup Copy Jobs](operations/backup_copy_jobs/README.md)
   * [Replication Jobs](operations/replication_jobs/README.md)
   * [Applications](operations/applications/README.md)
+    * [Microsoft Exchange](operations/applications/exchange.md)
     * [MS SQL Server](operations/applications/mssql_server.md)
