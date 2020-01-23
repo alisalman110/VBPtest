@@ -8,5 +8,5 @@ before_script:
 
 check_links:
   script:
-  - liche -r -v README.md
+  - liche -r -v .
   
