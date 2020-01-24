@@ -60,7 +60,7 @@ Virtual HANA Backup with Agentless Image Level Backup:
 Veeam Backup & Replication uses the scripts [Pre & Post Thaw Scripts]( https://helpcenter.veeam.com/docs/backup/vsphere/backup_job_vss_scripts_vm.html?ver=95) 
  which allow the execution of the backups via HANA Snapshot and also provide option to purge the transactions logs. 
 
-The Pre & Post Thaw scripts can be download from [VeeamHub](https://github.com/VeeamHub/applications/tree/master/sap-hana)
+The Pre & Post Thaw scripts can be download from [VeeamHub](https://github.com/VeeamHub/applications/tree/master/Freeze-Thaw%20Examples/sap-hana)
 
 ## Configure Backup:
 
