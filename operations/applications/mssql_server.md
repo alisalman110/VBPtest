@@ -74,7 +74,7 @@ Temporary folder path can be changed using SqlTempLogPath (STRING) registry valu
 
 For instructions on changing temporary folder path for agent-based backups refer to [KB2642 article](https://www.veeam.com/kb2642).
 
-As best practices it's highly recommended to periodically shrink the SQL log file, Please follow [Microsoft KB](https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2012/ms190757(v=sql.110)) for more information.
+As best practices it's highly recommended to periodically shrink the SQL log file, Please follow [Microsoft article](https://docs.microsoft.com/en-us/sql/relational-databases/databases/shrink-a-file?view=sql-server-ver15) for more information.
 
 
 ## Restore
