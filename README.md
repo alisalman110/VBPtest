@@ -3,6 +3,8 @@
 * [Anatomy](anatomy/README.md)
   * [Hyper-V](anatomy/hyper-v/README.md)
     * [Interaction with Hyper-V](anatomy/hyper-v/interaction.md)
+    * [Interaction with Guest OS](anatomy/hyper-v/guestinteraction.md)
+  * [Guest Interaction](anatomy/guestinteraction.md)
 * [Planning and Preparation](planning/README.md)
 * [Deployment and Configuration](deployment/README.md)
   * [Database](deployment/database.md)
