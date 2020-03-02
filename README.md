@@ -9,6 +9,7 @@
   * [Guest Interaction](anatomy/guestinteraction.md)
 * [Planning and Preparation](planning/README.md)
 * [Deployment and Configuration](deployment/README.md)
+  * [DNS Resolution](deployment/dns_resolution.md)
   * [Database](deployment/database.md)
   * [Backup Server](deployment/backup_server.md)
   * [Enterprise Manager](deployment/enterprise_manager.md)
