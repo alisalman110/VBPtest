@@ -17,7 +17,7 @@
     * [VMware Backup Proxies](deployment/backup_proxies/vmware_proxies.md)
     * [Hyper-V Backup Proxies](deployment/backup_proxies/hyperv_proxies.md)
   * [Backup Repositories](deployment/backup_repositories/index.md)
-    * [Windows Repositories](deployment/backup_repositories/windows.md)
+    * [Block Repositories](deployment/backup_repositories/block.md)
     * [Scale-out Backup Repositories](deployment/backup_repositories/scaleout.md)
     * [Capacity Tier](deployment/backup_repositories/capacity_tier.md)
   * [Tape Servers](deployment/tape_servers.md)
