@@ -18,6 +18,7 @@
     * [Hyper-V Backup Proxies](deployment/backup_proxies/hyperv_proxies.md)
   * [Backup Repositories](deployment/backup_repositories/README.md)
     * [Block Repositories](deployment/backup_repositories/block.md)
+    * [NAS Repositories](deployment/backup_repositories/nas.md)
     * [Object Repositories](deployment/backup_repositories/object.md)
     * [Scale-out Backup Repositories](deployment/backup_repositories/scaleout.md)
   * [Tape Servers](deployment/tape_servers.md)
