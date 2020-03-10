@@ -6,6 +6,7 @@
     * [Backup Modes](anatomy/hyper-v/backupmodes.md)
     * [Interaction with Guest OS](anatomy/hyper-v/guestinteraction.md)
     * [Instant VM Recovery](anatomy/hyper-v/instantvmrecovery.md)
+  * [Compression and Deduplication](anatomy/compression_and_deduplication.md)
   * [Guest Interaction](anatomy/guestinteraction.md)
 * [Planning and Preparation](planning/README.md)
 * [Deployment and Configuration](deployment/README.md)
