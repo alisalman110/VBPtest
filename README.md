@@ -16,7 +16,7 @@
   * [Backup Proxies](deployment/backup_proxies/README.md)
     * [VMware Backup Proxies](deployment/backup_proxies/vmware_proxies.md)
     * [Hyper-V Backup Proxies](deployment/backup_proxies/hyperv_proxies.md)
-  * [Backup Repositories](deployment/backup_repositories/README.md)
+  * [Backup Repositories](deployment/backup_repositories/index.md)
     * [Block Repositories](deployment/backup_repositories/block.md)
     * [NAS Repositories](deployment/backup_repositories/nas.md)
     * [Object Repositories](deployment/backup_repositories/object.md)
