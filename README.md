@@ -1,9 +1,10 @@
 # Veeam Best Practices Guide
 
 * [Anatomy](anatomy/README.md)
-  * [vSphere](anatomy/vsphere/index.md)
-    * [Instant VM Recovery](anatomy/vsphere/instant_vm_recovery.md)
-  * [Hyper-V](anatomy/hyper-v/README.md)
+  * [vSphere](anatomy/vmware/index.md)
+    * [Interaction with vSphere](anatomy/vmware/interaction.md)
+    * [Instant VM Recovery](anatomy/vmware/instant_vm_recovery.md)
+  * [Hyper-V](anatomy/hyper-v/index.md)
     * [Interaction with Hyper-V](anatomy/hyper-v/interaction.md)
     * [Backup Modes](anatomy/hyper-v/backupmodes.md)
     * [Interaction with Guest OS](anatomy/hyper-v/guestinteraction.md)
@@ -27,6 +28,7 @@
     * [Scale-out Backup Repositories](deployment/backup_repositories/scaleout.md)
   * [Tape Servers](deployment/tape_servers.md)
   * [Network Rules](deployment/network_rules.md)
+  * [Tuning vSphere](deployment/vsphere.md)
 * [Operations](operations/index.md)
   * [Backup Jobs](operations/backup_jobs/README.md)
   * [Backup Copy Jobs](operations/backup_copy_jobs/README.md)
