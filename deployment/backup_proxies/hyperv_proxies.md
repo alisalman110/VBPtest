@@ -1,48 +1,28 @@
-# Proxy Server - Microsoft Hyper-V
+---
+title: Hyper-V backup proxies
+parent: backup proxies
+grand_parent: Deployment and Configuration
+nav_order: 
+---
 
-In Microsoft Hyper-V environments VMs usually reside on local storage and CSV (Cluster Shared Volume). Veeam Backup & Replication leverages the VSS (Volume Shadow Copy) framework and proprietary Microsoft Hyper-V components to retrieve data and it acts as the VSS requestor. Interacting with the VSS framework, it obtains information about the infrastructure and identifies volumes where VM files are located and triggers the VSS coordinator to create the volume snapshots.
+# Hyper-V backup modes #
 
-The backup process, in Microsoft Hyper-V environments, expects the VM to be quiesced before taking the snapshot of the volume to make sure that there are no incomplete transactions in a database or no open files.
-Veeam Backup & Replication uses three methods to prepare Hyper-V VMs for backup:
- - [Online backup](https://helpcenter.veeam.com/docs/backup/hyperv/online_backup.html?ver=95) - the native Microsoft Hyper-V method for creating application-consistent backup without any downtime.
+Veeam Backup and Replication provides two different backup modes to process Hyper-V backups, both relying on the Microsoft VSS framework.
+- **On-Host** backup mode, for which backup data processing is on the Hyper-V node hosting the VM, leveraging non transportable shadow copies by using software VSS provider.
+- **Off-Host** backup mode, for which backup data processing is offloaded to another non clustered participating Hyper-V node, leveraging transportable shadow copies using Hardware VSS provider provided by the SAN storage vendor.
 
- - [Offline backup](https://helpcenter.veeam.com/docs/backup/hyperv/offline_backup.html?ver=95) - an alternative native method to obtain consistent backup. It requires a little downtime: Hyper-V uses the OS hibernation to freeze the VM's I/O.
+Backup mode availability is heavily depending on the underlying virtualization infrastructure, leaving Off-Host backup mode available only to protect virtual machines hosted on SAN storage volumes or SMB3 shares.
 
- - [Crash-consistent backup](https://helpcenter.veeam.com/docs/backup/hyperv/crash_consistent_backup.html?ver=95) - Veeam's proprietary method that allows the creation of crash-consistent backup without hibernating nor suspending the VM (no downtime required).
+Performance wise, since both backup modes are using the exact same Veeam transport services, the only differentiating factors will be the additional time requested to manage transportable snapshots (in favor of On-Host mode) and the balance between compute and backup resources consumption during backup windows (in favor of Off-Host mode).
 
- Whenever possible, Veeam Backup & Replication uses online backup to quiesce VMs. If online backup cannot be performed, Veeam Backup & Replication uses one of the other two methods to prepare a VM for backup.
+**Backup modes selection matrix**
 
-**Note:** If online backup cannot be performed, Veeam Backup & Replication fails over to the crash-consistent backup.
-If you do not want to produce a crash-consistent backup, you can instruct Veeam Backup & Replication to use the offline backup method.
+|   |PRO|CON|
+|---|---|---|
+|**On-Host**|<ul><li>Simplifies management</li><li>Does not depend on third party VSS provider</li><li>Does not require additional hardware</li><li>Can be used on any Hyper-V infrastructures</li></ul>|<ul><li>Requires additional resources from the hypervisors during the backup window, for IO processing and optimization</li><li>Does not depend on third party VSS provider</li><li>Does not require additional hardware</li></ul>|
+|**Off-Host**|<ul><li>No impact on the compute resources on the hosting hyper-v </li><li>Requires third party VSS hardware provider</li></ul>|<ul><li>Adds additional delay for snapshots transportation</li><li>Available only for virtualization infrastructures based on SAN storage or SMB3 shares</li></ul>|
 
-## On-host backup
-This is the default and **recommended** backup method as it works out of the box.
-On-host backup mode uses the native Microsoft Hyper-V VSS provider which is proven to be stable and reliable.
-During on-host backup processing, VM data is processed by the source Microsoft Hyper-V host the VM is running on, and the role of the backup proxy is assigned to the Hyper-V host which owns the CSV (Cluster Shared Volume) according to the following rules:
+## Limiting the impact of On-Host backup mode on the production infrastructure ##
 
-  - If you back up or replicate VMs whose disks are located on a CSV in Microsoft Hyper-V Server 2012R2 or 2016, and Microsoft CSV Software Shadow Copy Provider is used for snapshot creation, Veeam Backup & Replication assigns the role of an *"on-host backup proxy*" to the host owning the CSV. If VM disks are located on different CSVs, Veeam Backup & Replication may use several on-host backup proxies, which are the corresponding hosts owning the CSVs.
-
-  - In case you perform backup or replication of VMs whose disks are located on a CSV in Microsoft Hyper-V 2008 R2, and a VSS software or hardware provider is used for snapshot creation, Veeam Backup & Replication assigns the role of an *"on-host backup proxy"* to the host on which the processed VM is registered.
-
-The on-host backup process works in the following way:
-  1. Veeam Backup & Replication requests the native Hyper-V VSS provider to create snapshots of the corresponding volumes.
-  2. The Veeam Data Mover service that runs on the Hyper-V host mounts the snapshots, starts processing VMs' data and transfers it to the destination (either a backup repository or a secondary Hyper-V infrastructure).
-  3. Once the operation is complete, the volume snapshot is deleted.
-
-  ![On-host backup mode](./onhost_backup_mode.png)
-
-## Off-host backup
-In this backup mode, backup operations are moved from the Hyper-V hosts to one ore more dedicated physical server(s).
-The Veeam Data Mover service running on a dedicated machine, called *"off-host proxy"*, retrieves VM data from the source volume using *"transportable shadow copies"*. This technology allows Veeam Backup & Replication to create a snapshot of the CSV (Cluster Shared Volume) on which VM disks are saved and then import and mount this snapshot onto a different server which is part of the same SAN (Storage Area Network).
-
-Off-host backup mode requires third-party components that are not shipped with Veeam Backup & Replication: the so called **VSS Hardware Provider**, which are usually distributed as part of client components supplied by the storage vendor. These VSS providers must be tested in your dedicated environment (e.g. a MS Cluster and multi Off-Host Proxy environment). Please also check the storage snapshot logs after backup.
-
-For more information regarding the off-proxy requirements, refer to the [official documentation page](https://helpcenter.veeam.com/docs/backup/hyperv/offhost_backup_proxy.html?ver=95).
-
-The off-host backup process works in the following way:
-  1. Veeam Backup & Replication triggers a snapshot of the required volume on the Microsoft Hyper-V host.
-  2. This snapshot is mounted to the *"off-host backup proxy"*.
-  3. The Veeam Data Mover service running on the off-host backup proxy processes VM data on the mounted snapshot and transfers it to the destination (either a backup repository or a secondary Hyper-V infrastructure).
-  4. Once the operation is complete, the snapshot is detached from the off-host proxy and deleted from the storage system.
-
-  ![Off-host backup mode](offhost_backup_mode.png)
+While consuming production resources for backup purpose the On-Host backup mode disadvantages can be mitigated by the following guidelines.
+- **Spreading load across hypervisors**. It should be kept in mind that the backup load, instead of being carried by a limited number of dedicated proxies, will be spread through all the hypervisors. Default Veeam setting is to limit backup to 4 parallel tasks per hypervisor, which will use a maximum of four cores and 8 GB of RAM. This can be modified in the “Managed server” section of the Veeam Console, through the “Task limit” setting. For instance, if the sizing guidelines results in a total amount of 24 cores and 48 GB of RAM needed for Veeam transport services, and the infrastructure comprises 12 Hyper-V servers, each server task limit can be set to 2.
