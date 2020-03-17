@@ -24,5 +24,5 @@ Enter-PSSession -VMName <VMName>
 ---
 
 ## References
-- [Best Practice - Guest Interaction](anatomy/guestinteraction.md) (General guest interaction info)
+- [Best Practice - Guest Interaction](../guestinteraction.md) (General guest interaction info)
 - [User Guide - Guest Processing](https://helpcenter.veeam.com/docs/backup/hyperv/guest_processing.html)
