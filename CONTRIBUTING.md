@@ -13,3 +13,81 @@ When done go to merge request and resolve WIP status. It will indicate that the 
 Now the content can be reviewed by the team and discussed in merge request comments or merged to become a part of the main content.
 
 Rinse and repeat.
+
+## File & Folder Structure
+
+For a TOC like this
+
+* Anatomy
+    * vSphere
+        * Interaction
+        * Transport Modes            
+    * Hyper-V
+        * Interaction
+    * Backups 
+
+The folder structure should look like this
+
+    anatomy/
+    |-- vsphere/
+    |   |-- interaction.md
+    |   |-- transport_modes.md
+    |   |-- media/
+    |       |-- transport_mode_whatever_is_shown.png
+    |       |-- transport_mode_image_name2.png        
+    |       |-- interaction_image_name.png
+    |-- hyperv/
+    |   |-- interaction.md
+    |-- backups.md
+    |-- media/
+        |-- backups_321.png
+     
+## Page Headers
+
+The BP will be based on a [Just-The-Docs](https://pmarsceill.github.io/just-the-docs/) 
+template, so every page needs a specific header to be automatically included in
+the ToC and navigation. Check out [Navigtion Structure](https://pmarsceill.github.io/just-the-docs/docs/navigation-structure/)
+section for details.
+
+### Examples
+
+Some examples which can be copy & pasted and adapted:
+
+**Root Section** (`/anatomy/`)
+
+    ---
+    title: Anatomy
+    nav_order: 20
+    has_toc: false
+    has_children: true
+    permalink: /anatomy/
+    ---
+
+**Page in root-section** (`/anatomy/interaction.md`)
+
+    ---
+    title: Guest Interaction
+    parent: Anatomy
+    nav_order: 60
+    permalink: /anatomy/guestinteraction/
+    ---
+    
+**Sub-Section** (`/anatomy/hyper-v/index.md`)
+
+    ---
+    title: Hyper-V
+    parent: Anatomy
+    nav_order: 30
+    has_toc: false
+    has_children: true
+    permalink: /anatomy/hyper-v/
+    ---
+    
+**Page in sub-section** (`/anatomy/hyper-v/instantvmrecovery.md`)
+
+    ---
+    title: Instant VM Recovery
+    parent: Hyper-V
+    grand_parent: Anatomy
+    nav_order: 60
+    ---
