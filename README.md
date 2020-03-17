@@ -41,6 +41,7 @@
   * [Backup Jobs](operations/backup_jobs/README.md)
   * [Backup Copy Jobs](operations/backup_copy_jobs/README.md)
   * [Replication Jobs](operations/replication_jobs/README.md)
+  * [Tape Jobs](operations/tape_jobs.md)
   * [Guest Processing](operations/guest_processing.md)
   * [Applications](operations/applications/README.md)
     * [Microsoft Active Directory](operations/applications/active_directory.md)
