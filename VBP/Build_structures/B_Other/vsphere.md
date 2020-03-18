@@ -1,10 +1,9 @@
 ---
 title: Tuning vSphere
-parent: Other
-grand_parent: Build
-nav_order: 90
+parent: other
+grand_parent: build
+nav_order: 50
 ---
-
 # Tuning vSphere
 
 Please read the [Anatomy - vSphere - Interaction](/anatomy/vmware/interaction.md) section to

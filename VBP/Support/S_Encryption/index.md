@@ -1,15 +1,9 @@
 ---
 title: Encryption
 parent: Supplemental
-nav_order: 400
-has_toc: true
 has_children: true
+has_toc: true
+nav_order: 50
 ---
 
-
-#### Encryption
-  * Encryption Overview
-  * Network Transport Encryption
-  * Job Encryption
-  * Backup Repository Encryption
-  * Tape Job Encryption
+# Encryption

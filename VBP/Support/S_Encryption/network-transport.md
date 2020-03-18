@@ -2,9 +2,8 @@
 title: Network Transport Encryption
 parent: Encryption
 grand_parent: Supplemental
-nav_order: 20
+nav_order: 30
 ---
-
 # Network Transport Encryption
 
 ## What does it do?

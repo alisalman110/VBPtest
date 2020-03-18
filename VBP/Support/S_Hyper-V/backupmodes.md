@@ -1,7 +1,7 @@
 ---
 title: Backup Modes
 parent: Hyper-V
-grand_parent: Supplemental
+grand_parent: supplemental
 nav_order: 20
 ---
 

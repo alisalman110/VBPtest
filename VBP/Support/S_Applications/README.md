@@ -1,3 +1,0 @@
-# Application Control
-#### Applications
-  * Oracle

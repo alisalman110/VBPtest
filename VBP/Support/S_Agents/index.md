@@ -1,14 +1,9 @@
 ---
-title: Agents
+title: Agent Management
 parent: Supplemental
-nav_order: 30
+nav_order: 40
 has_toc: true
 has_children: true
 ---
 
-
-
-#### Agents
-* Veeam Agent Management
-* Veeam Agent for Microsoft Windows
-* Veeam Agent for Linux
+# Agent Management

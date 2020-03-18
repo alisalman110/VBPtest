@@ -2,8 +2,9 @@
 title: MySQL
 parent: Applications
 grand_parent: Operate
-nav_order: 50
+nav_order: 80
 ---
+
 
 
 

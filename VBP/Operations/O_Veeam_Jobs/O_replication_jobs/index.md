@@ -1,7 +1,7 @@
 ---
 title: Veeam Replication Jobs
 parent: Operate
-nav_order: 40
+nav_order: 30
 has_toc: true
 has_children: true
 ---

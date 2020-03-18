@@ -1,7 +1,7 @@
 ---
-title: Configuring Backup to tape
-parent: Tape Jobs
-grand_parent: Operations
+title: Veeam Tape
+parent: Veeam Tape Jobs
+grand_parent: Operate
 nav_order: 10
 ---
 

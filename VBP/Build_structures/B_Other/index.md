@@ -1,16 +1,16 @@
 ---
+layout: default
 title: Other
 parent: Build
-nav_order: 20
-has_toc: true
 has_children: true
+has_toc: true
+nav_order: 20
 ---
 
-#### Other
 
-* Preparation of infrastructure
-* Installation
-* Networking
-* SAN
-* Configuration
-* Hardening
+#### Veeam components
+* Veeam Backup & Replication Server
+* Veeam Backup Proxy Server
+* Veeam Backup Repository Server
+* Veeam Tape gateway Server
+* Veeam SMB Gateway Server

@@ -1,10 +1,9 @@
 ---
 title: Interaction with vSphere
-parent: VMware
-grand_parent: Anatomy
+parent: VMware vSphere
+grand_parent: Supplemental
 nav_order: 30
 ---
-
 # Interaction with vSphere
 
 Veeam Backup & Replication relies heavily on the vSphere infrastructure it is protecting. Much of

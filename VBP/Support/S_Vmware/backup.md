@@ -1,9 +1,10 @@
 ---
-title: VMware Backup
-parent: VMware
-grand_parent: Anatomy
+title: VMware Backups
+parent: VMware vSphere
+grand_parent: Supplemental
 nav_order: 20
 ---
+
 
 # VMware Backup
 

@@ -1,10 +1,9 @@
 ---
-title: VMware Replication
-parent: VMware
-grand_parent: Anatomy
-nav_order: 40
+title: Replication
+parent: VMware vSphere
+grand_parent: Supplemental
+nav_order: 50
 ---
-
 
 
 

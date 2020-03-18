@@ -1,8 +1,8 @@
 ---
 title: DNS Resolution
-parent: Other
-grand_parent: Build
-nav_order: 10
+parent: other
+grand_parent: build
+nav_order: 40
 ---
 
 # DNS Resolution

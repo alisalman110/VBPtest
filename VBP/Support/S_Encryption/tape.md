@@ -4,7 +4,6 @@ parent: Encryption
 grand_parent: Supplemental
 nav_order: 50
 ---
-
 # Tape Job Encryption
 
 ## What does it do?

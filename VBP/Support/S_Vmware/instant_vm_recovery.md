@@ -1,11 +1,10 @@
 ---
 title: Instant Recovery to VMware vSphere
-parent: VMware
-grand_parent: Anatomy
-nav_order: 70
+parent: VMware vSphere
+grand_parent: Supplemental
+nav_order: 20
 ---
-
-# Instant Recovery to VMware vSphere
+tant Recovery to VMware vSphere
 
 With Veeam Backup & Replication v10 the Instant Recovery has been further enhanced: now it is possible to start multiple Instant Recovery sessions directly from the VBR console and it is possible to use this feature along with **any** Veeam backup, including Veeam Agents, Hyper-V VM's, Nutanix AHV VM's as well as cloud native backups from Veeam Backup for Azure and AWS.
 

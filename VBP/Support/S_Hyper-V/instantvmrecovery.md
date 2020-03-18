@@ -2,7 +2,7 @@
 title: Instant VM Recovery
 parent: Hyper-V
 grand_parent: Supplemental
-nav_order: 60
+nav_order: 40
 ---
 
 # Instant VM Recovery

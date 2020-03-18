@@ -1,10 +1,9 @@
 ---
-title: VMware VM Restore
-parent: VMware
-grand_parent: Anatomy
+title: VirtualMachine Restore
+parent: VMware vSphere
+grand_parent: Supplemental
 nav_order: 60
 ---
-
 
 
 

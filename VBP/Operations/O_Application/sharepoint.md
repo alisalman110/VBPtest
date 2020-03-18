@@ -2,8 +2,11 @@
 title: Microsoft SharePoint Server
 parent: Applications
 grand_parent: Operate
-nav_order: 80
+nav_order: 50
 ---
+
+
+
 
 # Microsoft SharePoint Server
 

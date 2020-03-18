@@ -1,8 +1,8 @@
 ---
 title: Veeam Backup & Replication Database
-parent: Other
-grand_parent: Build
-nav_order: 20
+parent: other
+grand_parent: build
+nav_order: 30
 ---
 
 # Veeam Backup & Replication Database

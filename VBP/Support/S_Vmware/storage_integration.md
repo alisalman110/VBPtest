@@ -1,140 +1,54 @@
 ---
 title: Storage Integration
-parent: VMware
-grand_parent: Anatomy
-nav_order: 50
+parent: VMware vSphere
+grand_parent: Supplemental
+nav_order: 40
 ---
+# Storage Integration
 
+Veeam Backup & Replication is completely hardware agnostic, however it does integrate with some specific storage system to leverage the capabilities of native hardware snapshots.
 
+The integration, for some systems, goes beyond the use of hardware snapshots to read data during the backup and replication operations and allows users to orchestrate the creation of hardware snapshots, that will be stored within the same storage or copied to a secondary system of the same type.
 
+For the complete list of the supported storage, refer to the [Integration with Storage Systems](https://helpcenter.veeam.com/docs/backup/vsphere/storage_integration.html) from the user guide.
 
-# Backup from Storage Snapshots
-Veeam Backup & Replication offers integration with certain storage
-arrays for VM snapshot offloading. The number of supported storage vendors and arrays is constantly growing, a current list can be reviewed here:
+## Introduction
 
-[Backup from Storage Snapshots for the world’s leading storage providers](https://www.veeam.com/backup-from-storage-snapshots.html)
+Hardware snapshots can be used to reduce the impact on the virtual infrastructure during the backup and replication operations, as well as primary restore point to increase the RTPO.
 
+When reading data from an hardware snapshot, Veeam Backup & Replication leverages its own *Advanced Data Fetcher* to speed up the transfer rate. This something to keep in mind as it's one of the main differentiator between the **backup from storage snapshot** and **direct SAN** transport mode.
 
-Licensing and system requirements are described in the Veeam User Guide:
-[Backup from Storage Snapshots](https://helpcenter.veeam.com/docs/backup/vsphere/backup_from_storage_snapshots.html?ver=95).
-
-The storage integration covered in this section is VMware only and does not apply for Hyper-V.
-Any protocol supported by Backup from Storage Snapshots will utilize the Advanced
-Data Fetcher to optimize for retrieving data on enterprise grade storage.
-
-Backup from Storage Snapshots (BfSS) is a feature included in the storage
-array integrations and a way to optimize and enhance VM backups in a very
-easy way. The main objective for implementing BfSS is to minimize the lifetime
-of a VM snapshot, which reduces the time for VM snapshot commit and I/O
-the vSphere environment.
-
-![Backup from Storage Snapshots - VM snapshot lifetime](./backup_from_storage_snapshots_1.png)
-
-For regular VADP based backups, the VM snapshot is created and remains
-open (VM snap lifetime) until the VM backup is completed. Especially
-with large or highly transactional VMs, that can lead to large snapshot
-delta files being created during the backup followed by hours of snapshot
-commit tasks within vSphere producing high I/O on the production storage.
-Ultimately, these long snapshot commits may lead to unresponsive VMs.
-For more information about the impact of VM snapshots
-please see the "[Interaction with vSphere](./interaction_with_vsphere.html#impact-of-snapshot-operations)" section of this book.
-
-## How it works
-
-By using BfSS, the VM snapshot lifetime will be significantly reduced. In
-this section, we will go through the steps performed.
-
-![Backup from Storage Snapshots - data flow overview](./backup_from_storage_snapshots_2.png)
-
- 1. Application-aware processing ensures transactional consistency
-    within the VM
- 2. Veeam requests a VM snapshot via VMware APIs
- 3. Immediately after creating the VM snapshot, a storage snapshot
-    request is issued for saving the VM _including_ the application
-    consistent VM snapshot within the storage snapshot.
- 4. When the storage snapshot has been created, the VM snapshot is deleted
- 5. _(NetApp only - optional)_ Trigger a replication update to
-    secondary storage via SnapMirror or SnapVault
- 6. Mount storage snapshot to the Veeam backup proxy server
- 7. Read data from the storage snapshot and write to a Veeam backup repository
-
-### VM processing limit
-
-![Backup from Storage Snapshots - VMs per storage snapshot](./backup_from_storage_snapshots_6.png)
-
-When adding a large number of virtual machines to a job, by default steps
-1 and 2 (above) are repeated until all virtual machines within the job have
-successfully completed. Only then will BfSS proceed to step 3 and issue the
-storage snapshot. If adding 100s of VMs to a backup or replication job, this
-could cause a very high VM snapshot lifetime for the first VMs in the job list.
-
-When configuring such large jobs, it is advised to configure the maximum number
-of VMs within one storage snapshot. The setting is available in the
-advanced job settings under the **Integration** tab.
-
-Example: When creating a job with 100 VMs, and setting the limit to 10,
-BfSS will instruct the job manager to process the first 10 VMs (step 1 and 2),
-issue the storage snapshot and proceed with the backup (step 3-7). When step 7
-has successfully completed for the first 10 VMs, the job will repeat the above
-for the following 10 VMs in the job.
-
-As seen below, when ensuring proper configuration of BfSS,
-minimal VM snapshot lifetime is achieved, and reduces overall
-I/O penalty on the production storage for highly transactional VMs.
-
-![Backup from Storage Snapshots - reduced VM snapshot lifetime](./backup_from_storage_snapshots_3.png)
-
-## Configuration
-Enabling BfSS requires minimal configuration, but understanding the tasks
-and responsibilities of involved components are key when troubleshooting and
-optimizing for high performance and low RTO/RPO.
-
-![](./backup_from_storage_snapshots_4.png)
-
-The backup server is responsible for all API requests towards
-vSphere and storage arrays for determining present volumes, snapshots and
-all necessary details such as initiator groups, LUN mappings and which
-protocols are available.
-
-The proxy server(s) are used for reading data from the storage snapshot and
-sending it to the backup repository. To leverage Backup from Storage Snapshots,
-the following configuration requirements must be met:
-
-**Backup server** must have access to the management interfaces of
-the storage array. All additional prerequisites such as LUN mappings, creation
-of initiator groups for iSCSI, altering NFS exports and snapshot management
-are subsequently handled via this connection.
-
-**Backup proxy servers** must be
-able to directly access the storage array via the same protocol used for
-connecting the production datastore (FibreChannel, iSCSI or NFS). As opposed
-to using [Direct Storage Access](./direct_san.md),
-it is not a requirement for the proxy server
-to have access to the production datastore itself, as it reads data blocks
-directly from the cloned storage snapshot.
-
-As described in previous sections, the backup server and proxy server
-can be deployed on one single server or scaled out on different servers. In
-most environments, where BfSS is applicable, the components are usually
-separated for scalability reasons.
+Based on the protocol used by the storage system underneath, a physical Veeam proxy may be required.
 
 ## When to use
-When using Backup from Storage Snapshots, overall job processing may take
-longer, as additional steps are performed such as mapping vSphere Changed
-Block Tracking (CBT) to offsets of the storage snapshot, and the snapshot
-must be cloned and mounted on the backup proxy server. The mount overhead
-can take several seconds on block protocols as HBAs or initiators must be
-rescanned. It mostly affects FC deployments.
 
-With this in mind, using BfSS on small VMs or VMs with a very low change rate
-is not advised. As the VM snapshot lifetime on such VMs is very short, the
-benefits of using BfSS are minimal.
+Knowing that using backup from storage snapshot significantly reduces the time that the vSphere snapshot has to grow, as it is shown in the following picture:
+![](./media/storage_integration_snap_comparison.png)
 
-In most environments, large VMs or highly transactional VMs producing large
-amounts of changed data benefit most from using BfSS. Using the
-[VM Change Rate Estimation](https://helpcenter.veeam.com/docs/one/reporter/vm_change_rate_estimation.html?ver=95)
-report in Veeam Availability Suite, you may quickly identify such VMs.
+Backup from storage snapshot is not always recommended as it increases the number of tasks that a backup job must go through before start processing data: a vSphere snapshot of all the VMs that are part of the job must be taken before creating the actual hardware snapshot.
 
-VMs with either virtual or physical Raw Device Mapping (RDM)
-are not supported with BfSS. Such VMs will failover to backing up via
-standard methods if allowed in the job settings.
+The first thing to consider when it comes to decide whether to use backup from storage snapshot or not is the average load of the VMs to be protected during the backup window, as well as if the appliction running on it is sensitive to snapshot stuns.
+
+To properly make a good use of this feature, we recommend using backup jobs based on datastores as they represent the entity that provides either an high number of VMs grouped together and avoid a snapshot storm on the underneath storage array: no more than a single hardware snapshot at a time will exist for a given LUN during the backup execution.
+
+Scheduling also plays a crucial role when it comes to this backup mode: as mentioned above, since all the VM's have to be quiesced before creating the hardware snapshot, to guarantee a sustained throughput multiple backup jobs must run concurrently.
+
+![](./media/storage_integration_job_schedule.png)
+
+As it is shown in the picture above, jobs should start within an interval of 5 minutes one to the next and, in the advanced options, the option to limit the number of VMs to processed within a single hardware snapshot should be set to 10 or less (depending on how many concurrent jobs will run).
+
+![](./media/storage_integration_jop_options.png)
+
+Limiting the number of VMs within an hardware snapshot is key to reduce the time in which the vSphere snapshot is open to a minimum thus reducing the impact on the VMs. Without this option enabled, the job will quiesce first all the VMs before creating the hardware snapshot and, if the job has to process an high number of VMs, the vSphere snapshot of the first ones processed may grow considerably.
+
+## Snapshot-only job
+
+Using snapshot-only job is like scheduling automatic snapshots creation in the storage management console. That job produces a snapshot that is stored within the same storage array and controls frequency and retention of that chain of restore points. No additional backup file will be saved in the backup repository: the snapshot chain is self-consistent and provides the same recovery capabilities as if it was a regular backp file.
+
+Depending on the backup job settings, the created snapshots can be application-consistent or crash-consistent. If application-aware image processing is enabled, during the job session, Veeam Backup & Replication will interact with the guest OS creating a vSphere snapshot and proceeds as it does for normal backup jobs. Right after this step, the hardware snapshot is created.
+
+Regardless the consistency of the snapshot, we do recommend to include snapshot-only jobs as part of your data protection strategy, especially for the most critical VMs hosted in your virtual infrastructure. The overhead generated by this type of job is very little compared to the standard backup process and modern storage systems make use of smart ways to store these snapshosts efficiently, reducing the space needed to store them to the bare minimum.
+
+Also, applications like Microsoft SQL and Exchange can use these Snapshot only jobs to create a snapshot chain for fast recovery and increase the protection level by generating restore points, at a very low cost in terms of impact and consumed space, even outside the usual nightly backup window.
+
+![](./media/storage_integration_schedule.png)

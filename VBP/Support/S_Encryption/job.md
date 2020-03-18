@@ -2,9 +2,8 @@
 title: Job Encryption
 parent: Encryption
 grand_parent: Supplemental
-nav_order: 30
+nav_order: 20
 ---
-
 # Backup and Backup Copy Job Encryption
 
 ## What does it do?

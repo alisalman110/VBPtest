@@ -6,6 +6,8 @@ nav_order: 60
 ---
 
 
+
+
 # Oracle
 
 Veeam Backup and Replication natively supports backup of Oracle database servers and allows for image level and granular Oracle databases restore.

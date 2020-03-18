@@ -1,8 +1,10 @@
 ---
 title: Veeam Agent for Microsoft Windows
-parent: Agents
+parent: Agent Management
 grand_parent: Supplemental
 nav_order: 20
+---
+
 ---
 # Veeam Agent for Microsoft Windows
 

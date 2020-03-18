@@ -5,6 +5,8 @@ grand_parent: Operate
 nav_order: 70
 ---
 
+
+
 # SAP HANA
 
 Veeam provides following options to protect SAP HANA Environment:

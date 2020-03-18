@@ -1,11 +1,9 @@
 ---
-layout: default
 title: Security
 has_children: true
 has_toc: true
 nav_order: 25
 ---
+# Infrastructure Hardening
 
-# Security
-  * Hardening
-  * Ports
+How to take over the world
