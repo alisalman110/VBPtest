@@ -14,3 +14,4 @@ has_children: true
 * Veeam Backup Repository Server
 * Veeam Tape gateway Server
 * Veeam SMB Gateway Server
+* Veeam WAN Accelerators
