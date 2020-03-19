@@ -1,6 +1,6 @@
 ---
-title: Proposed List
-nav: 12000
+title: Initially Proposed List
+nav_order: 12000
 ---
 
 
