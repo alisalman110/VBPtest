@@ -1,7 +1,7 @@
 ---
 title: Backup Job Methods
-parent: Veeam Jobs
-grand_parent: 4-Operate
+parent: Veeam Backup Jobs
+grand_parent: Veeam Jobs
 nav_order: 20
 ---
 
