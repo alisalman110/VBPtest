@@ -8,11 +8,11 @@ nav_order: 1
 Veeam Backup & Replication Best Practices
 =======
 
-Hi, and welcome to the Veeam Backup & Replication Best Practices.
+Welcome to the Veeam Backup & Replication Best Practices.
 
 This guide is intended to provide best practices for Veeam Backup & Replication. It is not meant as a full documentation or detailed explanation of the features. Please refer to the [Veeam Help Center](https://helpcenter.veeam.com) for this kind of documents.
 
-The best practice guide is intended for professionals in search for answers and suggestions to different topics. It may be a design idea, the best way to use a given feature, pitfalls to avoid, and so on. In general, these information have been developed, collected and updated by the team of Veeam Solutions Architects working on the field together with Veeam users. They don't explain the theory, but the practice.
+The best practice guide is intended for professionals in search of answers and suggestions to different topics. It may be a design idea, the best way to use a given feature, pitfalls to avoid, and so on. In general, this information has been developed, collected and updated by the team of Veeam Solutions Architects working on the field together with Veeam users. They don't explain the theory, but the practice.
 
 Be aware that a best practice is not the only available answer. It will fit in the majority of cases but can also be totally wrong under different circumstances. Make sure you understand the implications of the advised best practices or ask someone who does.
 
@@ -36,3 +36,5 @@ Finally, there are some additional sections for specific topics.
 
 We hope you will find the information collected here useful.
 Thanks!
+
+The Veeam Solutions Architect Team
