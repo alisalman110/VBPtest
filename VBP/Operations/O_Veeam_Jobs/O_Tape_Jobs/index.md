@@ -1,6 +1,6 @@
 ---
 title: Veeam Tape Jobs
-parent: 4-Operate
+parent: Veeam Jobs
 has_children: true
 has_toc: true
 nav_order: 70
