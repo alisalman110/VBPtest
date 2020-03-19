@@ -1,6 +1,6 @@
 ---
 title: Veeam Backup Copy Jobs
-parent: 4-Operate
+parent: Veeam Jobs
 nav_order: 20
 has_toc: true
 has_children: true
