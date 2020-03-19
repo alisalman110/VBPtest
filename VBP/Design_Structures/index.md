@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Design
+title: 2-Design
 has_children: true
 has_toc: true
 nav_order: 15

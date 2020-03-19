@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Build
+title: 3-Build
 has_children: true
 has_toc: true
-nav_order: 10
+nav_order: 15
 ---
 
 # Build & Configure (How we build it)
