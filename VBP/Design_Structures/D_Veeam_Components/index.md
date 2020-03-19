@@ -1,6 +1,6 @@
 ---
 title: Veeam Components Designs
-parent: Design
+parent: 2-Design
 nav_order: 10
 has_toc: true
 has_children: true

@@ -1,6 +1,6 @@
 ---
 title: Veeam Backup Enterprise Manager
-parent: Enteprise Manager
+parent: Enterprise Manager
 grand_parent: Veeam Components
 nav_order: 10
 ---

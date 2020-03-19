@@ -1,7 +1,7 @@
 ---
 title: Microsoft Exchange
 parent: Applications
-grand_parent: Operate
+grand_parent: 4-Operate
 nav_order: 30
 ---
 

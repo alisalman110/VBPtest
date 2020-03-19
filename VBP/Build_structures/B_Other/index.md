@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Other
-parent: Build
+parent: 3-Build
 has_children: true
 has_toc: true
 nav_order: 20

@@ -2,7 +2,7 @@
 layout: default
 title: Veeam Backup & Replication Server
 parent: Veeam Components
-grand_parent: Build
+grand_parent: 3-Build
 has_children: true
 has_toc: true
 nav_order: 10
