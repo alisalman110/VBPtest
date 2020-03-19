@@ -1,7 +1,6 @@
 ---
 title: Veeam Components
 parent: 3-Build
-grand_parent: Welcome
 nav_order: 10
 has_toc: true
 has_children: true
