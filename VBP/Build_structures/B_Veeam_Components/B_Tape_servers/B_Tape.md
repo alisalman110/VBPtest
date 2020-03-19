@@ -2,7 +2,7 @@
 title: Build_Tape
 parent: Veeam Tape Services
 grand_parent: Veeam Components
-nav_order: 80
+nav_order: 10
 ---
 
 #Tape Configuration Requirements
