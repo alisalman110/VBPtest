@@ -1,4 +1,12 @@
-# Veeam Best Practices Guide
+---
+title: Proposed List
+nav: 12000
+---
+
+
+
+
+# Proposed List
 
 * [Anatomy](anatomy/README.md)
   * [vSphere](anatomy/vmware/index.md)
