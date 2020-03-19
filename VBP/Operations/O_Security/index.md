@@ -1,7 +1,7 @@
 ---
 title: Veeam Security
-parent:Operate
-grand_parent: 4-Operate
+parent: 4-Operate
+grand_parent: Welcome
 nav_order: 60
 has_toc: true
 has_children: true
