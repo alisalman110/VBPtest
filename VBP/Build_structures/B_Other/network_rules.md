@@ -1,7 +1,7 @@
 ---
 title: Network Rules
 parent: other
-grand_parent: build
+grand_parent: 3-Build
 nav_order: 60
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Restores
-parent: Operate
+parent: 4-Operate
 nav_order: 40
 has_toc: true
 has_children: true

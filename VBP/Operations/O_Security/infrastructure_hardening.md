@@ -1,7 +1,7 @@
 ---
 title: Hardening Infrastructure
 parent: Veeam Security
-grand_parent: Operate
+grand_parent: 4-Operate
 nav_order: 10
 ---
 

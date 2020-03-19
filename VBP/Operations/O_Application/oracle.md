@@ -1,7 +1,7 @@
 ---
 title: Oracle
 parent: Applications
-grand_parent: Operate
+grand_parent: 4-Operate
 nav_order: 60
 ---
 
