@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 1-Assess
+parent: Welcome
 has_children: true
 has_toc: true
 nav_order: 5
