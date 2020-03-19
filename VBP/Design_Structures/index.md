@@ -3,7 +3,7 @@ layout: default
 title: Design
 has_children: true
 has_toc: true
-nav_order: 10
+nav_order: 15
 ---
 
 ## Design (How we document it)
