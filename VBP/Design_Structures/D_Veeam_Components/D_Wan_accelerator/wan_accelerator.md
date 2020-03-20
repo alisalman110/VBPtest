@@ -15,7 +15,15 @@ By combining multiple technologies such as network compression, multi-threading,
 ## WAN Accelerator Placement
 WAN accelerators work in pairs: one WAN accelerator should be deployed at the source side and another at the target site. Many to one scenario is also possible but needs accurate sizing and has higher system requirements.
 
+**How many source WAN accelerators do I need ?**
+
+Since WAN accelerator processs VM disk sequentially, you may consider using more than one source WAN accelerators to distribute tasks between them. Many-to-one scenario is supported, target WAN accelerator should be sized carefully in this case with recommended ratio 4:1.
+
+
 ## WAN Accelerator System requirements
+
+**Source WAN accelerator**
+
 
 ![*Source WAN accelerator IOPS*](./Media/Source_WAN_IOPS.png)
 
