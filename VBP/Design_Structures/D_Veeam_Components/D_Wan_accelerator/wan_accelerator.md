@@ -46,10 +46,15 @@ Additionally, plan for 10 GB of working space for payloads and other temporary f
 
 **Note:** The cache size on the source WAN accelerator will always be ignored, the digest files will be produced regardless of cache size setting configured. They may consume considerable disk space. Even if configuring the cache size on a source WAN accelerator is not as important, it still must exist as a number. 
 Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\src. The only file created in this directory is data.veeamdrf file. This file will be synchronized from the target WAN accelerator in following cases: 
+
 •	Source WAN Accelerator cache was manually cleared, or digests deleted
+
 •	There was not enough space on the source WAN accelerator
+
 •	It is the first session after enabling the WAN accelerator setting
+
 •	If the job was seeded /mapped
+
 The size of this file is typically up to 2% of the configured target cache size (see sizing target WAN); thus, it may take some time for the initial data transfer to begin
 
 
