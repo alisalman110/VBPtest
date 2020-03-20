@@ -17,7 +17,7 @@ WAN accelerators work in pairs: one WAN accelerator should be deployed at the so
 
 ## WAN Accelerator System requirements
 
-![*Source WAN accelerator IOPS*](./media/Source_WAN_IOPS.png)
+![*Source WAN accelerator IOPS*](./Media/Source_WAN_IOPS.png)
 
 ## WAN Accelerator Sizing
 
