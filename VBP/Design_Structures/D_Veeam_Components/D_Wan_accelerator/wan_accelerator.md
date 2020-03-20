@@ -72,3 +72,10 @@ Although a target WAN accelerator consumes less CPU resources than the source, t
 For each processed data block, the WAN accelerator will update the cache file (if required), or it may retrieve the data block from the target repository (if possible). The cache is active on operating system blocks only, while other data blocks are being processed only with the WAN optimized data reduction algorithm.
 
 
+![*Source WAN accelerator IOPS*](./Media/Target_WAN_IOPS.png)
+*Target WAN accelerator IOPS*
+
+Tests show that there are no significant performance differences in using spinning disk drives as storage for the target WAN accelerator cache rather than flash storage. However, when multiple source WAN accelerators are connected to a single target WAN accelerator (many-to-one deployment), it is recommended to use SSD or equivalent storage for the target cache, as the I/O is now the sum of all the difference sources.
+
+
+
