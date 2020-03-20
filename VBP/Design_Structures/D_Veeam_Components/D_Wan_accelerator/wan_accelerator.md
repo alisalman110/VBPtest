@@ -37,9 +37,9 @@ Each digest file consumes up to 2% of its source VM disk size. VM disk size is c
 WAN accelerator keeps 2 copies of digest files for each processed VM disk  resulting from the previous session and current session. At the end of the session these 2 files are merged into 1. As we need to count for this, we will calculate 5% of source VM Disk size for digest files. 
 Additionally, plan for 10 GB of working space for payloads and other temporary files.
 
- o	Formula: Digests = (Source data size in GB) * 5% + 10 GB
+     o	Formula: Digests = (Source data size in GB) * 5% + 10 GB
 
- o	Example: with 2 TB source data: (2,000 GB * 5 %)+ 10 GB = 110 GB
+    o	Example: with 2 TB source data: (2,000 GB * 5 %)+ 10 GB = 110 GB
 
 **Note:** The cache size on the source WAN accelerator will always be ignored, the digest files will be produced regardless of cache size setting configured. They may consume considerable disk space. Even if configuring the cache size on a source WAN accelerator is not as important, it still must exist as a number. 
 Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\src. The only file created in this directory is data.veeamdrf file. This file will be synchronized from the target WAN accelerator in following cases: 
@@ -54,7 +54,7 @@ Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\sr
 
 The size of this file is typically up to 2% of the configured target cache size (see sizing target WAN); thus, it may take some time for the initial data transfer to begin
 
-    o	Formula: *data.veeamdrf* = TargetCacheSize*2%
+    o	Formula: data.veeamdrf = TargetCacheSize*2%
 
 ## Target WAN Accelerator System requirements
 
