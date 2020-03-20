@@ -18,8 +18,7 @@ WAN accelerators work in pairs: one WAN accelerator should be deployed at the so
 Since WAN accelerator processes VM disk sequentially, you may consider using more than one source WAN accelerators to distribute tasks between them. Many-to-one scenario is supported, target WAN accelerator should be sized carefully in this case with recommended ratio 4:1.
 
 
-## WAN Accelerator System requirements
-**Source WAN accelerator**
+## Source WAN Accelerator System requirements
 
 The source WAN accelerator consumes a high amount of CPU and memory whilst re-applying the WAN optimized compression algorithm. Recommended system configuration is 4 CPU cores and 8 GB RAM. When using an existing Veeam Managed Server for Wan Acceleration which already has a role such as Veeam Backup & Replication Server, Proxy or Windows Repository ensure you have not overcommitted the CPUs on that host and there is enough resource for each role, otherwise the job will wait for a free CPU to continue.
 The I/O requirements for the source WAN accelerator spikes every time a new VM disk starts processing, so the typical I/O pattern is made of many small blocks. Thus, it is recommended to deploy WAN accelerators on disk configurations with decent I/O performance, avoiding high latency spinning disks.
@@ -38,7 +37,7 @@ Each digest file consumes up to 2% of its source VM disk size. VM disk size is c
 WAN accelerator keeps 2 copies of digest files for each processed VM disk  resulting from the previous session and current session. At the end of the session these 2 files are merged into 1. As we need to count for this, we will calculate 5% of source VM Disk size for digest files. 
 Additionally, plan for 10 GB of working space for payloads and other temporary files.
 
-•	Formula: Digests = <Source data size in GB> * 5% + 10 GB
+•	Formula: Digests = (Source data size in GB) * 5% + 10 GB
 
 •	Example with 2 TB source data: (2,000 GB * 5 %)+ 10 GB = 110 GB
 
@@ -57,14 +56,19 @@ The size of this file is typically up to 2% of the configured target cache size 
 
 •	Formula: *data.veeamdrf* = TargetCacheSize*2%
 
-**Target WAN Accelerator**
+## Target WAN Accelerator System requirements
 
 The following recommendations apply to configuring a target WAN accelerator.
 
 Cache size
+
 •	The cache size setting configured on the target WAN accelerator will be applied to the pair of WAN accelerators. This should be taken into account when sizing for many-to-one scenarios, as configuring 100 GB cache size will result in 100 GB multiplied by the number of pairs configured for each target WAN accelerator.
 
 •	It is recommended to configure the cache size at 10 GB for each unique operating system processed by the WAN accelerator. 
 
 **Note** Each version of Microsoft Windows OS is considered to be unique, while all Linux distributions are treated as one OS.
+
+Although a target WAN accelerator consumes less CPU resources than the source, the I/O requirements for the target side are higher.
+For each processed data block, the WAN accelerator will update the cache file (if required), or it may retrieve the data block from the target repository (if possible). The cache is active on operating system blocks only, while other data blocks are being processed only with the WAN optimized data reduction algorithm.
+
 
