@@ -121,7 +121,9 @@ Digest space must be built into the equation using the same size for each source
 ![*Target WAN accelerator 1-1*](./Media/WAN_1_digest.png)
 
 •	Example with 5 sources:
+
     o	Five source WAN accelerators with digest space 20GB each equates to target digest requiring 20GB * 5=100GB
+    
     o	So, 100GB digests + Used disk space (5 sources* 2 operating systems *10GB) = 200GB
 
 ![*Target WAN accelerator 1-1*](./Media/WAN_many_digest.png)
