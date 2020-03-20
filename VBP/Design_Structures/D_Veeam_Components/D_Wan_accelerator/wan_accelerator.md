@@ -100,23 +100,23 @@ o	(Number of sources * <formula for configured cache size>)
 
 •	Example with one source and two operating systems:
 
-o	Configured cache size: (2 operating systems * 10 GB) + 20 GB = 40 GB
+    o	Configured cache size: (2 operating systems * 10 GB) + 20 GB = 40 GB
 
-o	Used disk space: (1 source * 40 GB) = 40 GB
+    o	Used disk space: (1 source * 40 GB) = 40 GB
 
 •	Example with five sources and four operating systems:
 
-o	Configured cache size: (4 operating systems * 10 GB) + 20 GB = 60 GB
+    o	Configured cache size: (4 operating systems * 10 GB) + 20 GB = 60 GB
 
-o	Used disk space: (5 sources * 60 GB) = 300 GB
+    o	Used disk space: (5 sources * 60 GB) = 300 GB
 
 Digest space must be built into the equation using the same size for each source target:
 
 •	Example with one source and two operating systems
 
-o	one source digest space 20GB requires target digest folder of 20GB
+    o  	one source digest space 20GB requires target digest folder of 20GB
 
-o	so 20 GB digests + Cache disk space (40GB)=60 GB
+    o	so 20 GB digests + Cache disk space (40GB)=60 GB
 
 ![*Target WAN accelerator 1-1*](./Media/WAN_1_digest.png)
 
