@@ -26,7 +26,7 @@ The I/O requirements for the source WAN accelerator spikes every time a new VM d
 ![*Source WAN accelerator IOPS*](./Media/Source_WAN_IOPS.png)
 *Source WAN accelerator IOPS*
 
-## WAN Accelerator Sizing
+## Source WAN Accelerator Sizing
 
 **Disk Size**
 
@@ -77,5 +77,44 @@ For each processed data block, the WAN accelerator will update the cache file (i
 
 Tests show that there are no significant performance differences in using spinning disk drives as storage for the target WAN accelerator cache rather than flash storage. However, when multiple source WAN accelerators are connected to a single target WAN accelerator (many-to-one deployment), it is recommended to use SSD or equivalent storage for the target cache, as the I/O is now the sum of all the difference sources.
 
+## Target WAN Accelerator Sizing
+
+**Disk Size**
+
+Ensure that sufficient space has been allocated for global cache on the target WAN accelerator.
+At least 10 GB per each different OS that is backed up. That is, if you plan to backup VMs running Windows 8, Windows 2008 R2, Windows 2012 and RHEL 6 (four different operating systems), you will need at least 10 GB * 4 = 40 GB
+Plan for additional 20 GB of working space for cache population, payload and other temporary files.
+If the cache is pre-populated, an additional temporary cache is created. The temporary cache will be converted into being the cache used for the first connected source. Subsequently connected sources will duplicate the cache of the first pair. As caches are duplicated the configured cache size is considered *per pair* of WAN accelerators.
+**Formulas:**
+
+•	Formula for configured cache size (insert this number in configuration wizard):
+
+o	(Number of operating systems * 10 GB) + 20 GB
+
+•	Formula for used disk space (Many-to-one scenario)
+
+o	(Number of sources * <formula for configured cache size>)
+
+**Examples:**
+
+•	Example with one source and two operating systems:
+
+o	Configured cache size: (2 operating systems * 10 GB) + 20 GB = 40 GB
+
+o	Used disk space: (1 source * 40 GB) = 40 GB
+
+•	Example with five sources and four operating systems:
+
+o	Configured cache size: (4 operating systems * 10 GB) + 20 GB = 60 GB
+
+o	Used disk space: (5 sources * 60 GB) = 300 GB
+
+Digest space must be built into the equation using the same size for each source target:
+
+•	Example with one source and two operating systems
+
+o	one source digest space 20GB requires target digest folder of 20GB
+
+o	so 20 GB digests + Cache disk space (40GB)=60 GB
 
 
