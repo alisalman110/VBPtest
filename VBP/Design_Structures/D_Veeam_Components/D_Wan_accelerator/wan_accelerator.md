@@ -11,8 +11,9 @@ Introduction and see link at bottom of page
 
 ## WAN Accelerator Placement
 
-## WAN Accelerator OS requirements
+## WAN Accelerator System requirements
 
+![*Source WAN accelerator IOPS*](./media/Source_WAN_IOPS.png)
 ## WAN Accelerator Sizing
 
 ## References
