@@ -128,4 +128,20 @@ Digest space must be built into the equation using the same size for each source
 
 ![*Target WAN accelerator 1-1*](./Media/WAN_many_digest.png)
 
+For understanding how the disk space is consumed, please see the following sections.
+
+**VeeamWAN\GlobalCache\trg**
+
+For each pair there will be a subfolder in the trg directory, with a UUID describing which source WAN accelerator the cache is attached to. In each of those subfolders, the blob.bin file containing the cache will be located. That file size corresponds to the setting configured in the management console.
+Note: The blob.bin file will exist for all connected source WAN accelerators.
+
+**VeeamWAN\GlobalCache\temp**
+
+When connecting a new source WAN accelerator, the temp folder will temporarily contain the data.veeamdrf file that is later transferred to the source containing the cache manifest.
+
+**VeeamWAN\Digests**
+
+Although the Digest folder is created on the target accelerator no data is stored on the target normally, however it must be sized into the target in case the digest on the source becomes corrupt or is missing. In this case the target will calculate its own digests in this location until the source WAN Accelerator comes back online.
+
+
 
