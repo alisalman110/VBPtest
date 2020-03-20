@@ -85,6 +85,7 @@ Ensure that sufficient space has been allocated for global cache on the target W
 At least 10 GB per each different OS that is backed up. That is, if you plan to backup VMs running Windows 8, Windows 2008 R2, Windows 2012 and RHEL 6 (four different operating systems), you will need at least 10 GB * 4 = 40 GB
 Plan for additional 20 GB of working space for cache population, payload and other temporary files.
 If the cache is pre-populated, an additional temporary cache is created. The temporary cache will be converted into being the cache used for the first connected source. Subsequently connected sources will duplicate the cache of the first pair. As caches are duplicated the configured cache size is considered *per pair* of WAN accelerators.
+
 **Formulas:**
 
 •	Formula for configured cache size (insert this number in configuration wizard):
