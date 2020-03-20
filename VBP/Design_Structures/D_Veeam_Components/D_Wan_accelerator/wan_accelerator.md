@@ -24,10 +24,14 @@ Since WAN accelerator processs VM disk sequentially, you may consider using more
 
 **Source WAN accelerator**
 
+The source WAN accelerator consumes a high amount of CPU and memory whilst re-applying the WAN optimized compression algorithm. Recommended system configuration is 4 CPU cores and 8 GB RAM. When using an existing Veeam Managed Server for Wan Acceleration which already has a role such as Veeam Backup & Replication Server, Proxy or Windows Repository ensure you have not overcommitted the CPUs on that host and there is enough resource for each role, otherwise the job will wait for a free CPU to continue.
+The I/O requirements for the source WAN accelerator spikes every time a new VM disk starts processing, so the typical I/O pattern is made of many small blocks. Thus, it is recommended to deploy WAN accelerators on disk configurations with decent I/O performance, avoiding high latency spinning disks.
 
 ![*Source WAN accelerator IOPS*](./Media/Source_WAN_IOPS.png)
 *Source WAN accelerator IOPS*
 
 ## WAN Accelerator Sizing
+
+**Disk Size**
 
 ## References
