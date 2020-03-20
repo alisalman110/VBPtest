@@ -1,7 +1,6 @@
 ---
 title: DNS Resolution
-parent: other
-grand_parent: 3-Build
+parent: 1-Assess
 nav_order: 40
 ---
 
