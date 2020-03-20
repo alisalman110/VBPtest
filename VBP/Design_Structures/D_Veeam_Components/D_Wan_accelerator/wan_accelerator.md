@@ -118,6 +118,6 @@ o	one source digest space 20GB requires target digest folder of 20GB
 
 o	so 20 GB digests + Cache disk space (40GB)=60 GB
 
-![*Target WAN accelerator 1-1*](./Media/WAN_1_digestpng)
+![*Target WAN accelerator 1-1*](./Media/WAN_1_digest.png)
 
 
