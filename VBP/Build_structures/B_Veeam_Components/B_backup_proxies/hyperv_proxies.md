@@ -19,10 +19,17 @@ Performance wise, since both backup modes are using the exact same Veeam transpo
 
 |   |PRO|CON|
 |---|---|---|
-|**On-Host**|<ul><li>Simplifies management</li><li>Does not depend on third party VSS provider</li><li>Does not require additional hardware</li><li>Can be used on any Hyper-V infrastructures</li></ul>|<ul><li>Requires additional resources from the hypervisors during the backup window, for IO processing and optimization</li><li>Does not depend on third party VSS provider</li><li>Does not require additional hardware</li></ul>|
-|**Off-Host**|<ul><li>No impact on the compute resources on the hosting hyper-v </li><li>Requires third party VSS hardware provider</li></ul>|<ul><li>Adds additional delay for snapshots transportation</li><li>Available only for virtualization infrastructures based on SAN storage or SMB3 shares</li></ul>|
+|**On-Host**|Simplifies management.  Does not depend on third party VSS provider.  Does not require additional hardware.  Can be used on any Hyper-V infrastructures.|Requires additional resources from the hypervisors during the backup window, for IO processing and optimization.  Does not depend on third party VSS provider.  Does not require additional hardware.|
+|**Off-Host**|No impact on the compute resources on the hosting hyper-v.  Requires third party VSS hardware provider.|Adds additional delay for snapshots transportation.  Available only for virtualization infrastructures based on SAN storage or SMB3 shares.|
 
 ## Limiting the impact of On-Host backup mode on the production infrastructure ##
 
 While consuming production resources for backup purpose the On-Host backup mode disadvantages can be mitigated by the following guidelines.
 - **Spreading load across hypervisors**. It should be kept in mind that the backup load, instead of being carried by a limited number of dedicated proxies, will be spread through all the hypervisors. Default Veeam setting is to limit backup to 4 parallel tasks per hypervisor, which will use a maximum of four cores and 8 GB of RAM. This can be modified in the “Managed server” section of the Veeam Console, through the “Task limit” setting. For instance, if the sizing guidelines results in a total amount of 24 cores and 48 GB of RAM needed for Veeam transport services, and the infrastructure comprises 12 Hyper-V servers, each server task limit can be set to 2.
+
+# Related links #
+[On-host backup for Hyper-V](https://helpcenter.veeam.com/docs/backup/hyperv/onhost_backup.html?ver=100)
+
+[Off-host backup for Hyper-V](https://helpcenter.veeam.com/docs/backup/hyperv/offhost_backup.html?ver=100)
+
+[Off-host proxy on Hyper-V](https://helpcenter.veeam.com/docs/backup/hyperv/offhost_backup_proxy.html?ver=100)
