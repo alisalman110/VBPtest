@@ -26,6 +26,7 @@ Since WAN accelerator processs VM disk sequentially, you may consider using more
 
 
 ![*Source WAN accelerator IOPS*](./Media/Source_WAN_IOPS.png)
+*Source WAN accelerator IOPS*
 
 ## WAN Accelerator Sizing
 
