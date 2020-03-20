@@ -7,8 +7,6 @@ nav_order: 10
 
 # Veeam WAN Accelerator
 
-Introduction and see link at bottom of page
-
 By combining multiple technologies such as network compression, multi-threading, dynamic TCP window size, variable block size deduplication and global caching, WAN acceleration provides sufficient capability when the network bandwidth is low or limited when performing Backup Copy and Replication jobs. This technology is specifically designed to accelerate Veeam job. Any other WAN acceleration technology should be disabled for Veeam traffic.
 
 
@@ -57,5 +55,16 @@ Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\sr
 
 The size of this file is typically up to 2% of the configured target cache size (see sizing target WAN); thus, it may take some time for the initial data transfer to begin
 
+•	Formula: *data.veeamdrf* = TargetCacheSize*2%
 
-## References
+**Target WAN Accelerator**
+
+The following recommendations apply to configuring a target WAN accelerator.
+
+Cache size
+•	The cache size setting configured on the target WAN accelerator will be applied to the pair of WAN accelerators. This should be taken into account when sizing for many-to-one scenarios, as configuring 100 GB cache size will result in 100 GB multiplied by the number of pairs configured for each target WAN accelerator.
+
+•	It is recommended to configure the cache size at 10 GB for each unique operating system processed by the WAN accelerator. 
+
+**Note** Each version of Microsoft Windows OS is considered to be unique, while all Linux distributions are treated as one OS.
+
