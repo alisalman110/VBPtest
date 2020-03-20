@@ -54,7 +54,7 @@ Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\sr
 
 The size of this file is typically up to 2% of the configured target cache size (see sizing target WAN); thus, it may take some time for the initial data transfer to begin
 
-•	Formula: *data.veeamdrf* = TargetCacheSize*2%
+    o	Formula: *data.veeamdrf* = TargetCacheSize*2%
 
 ## Target WAN Accelerator System requirements
 
