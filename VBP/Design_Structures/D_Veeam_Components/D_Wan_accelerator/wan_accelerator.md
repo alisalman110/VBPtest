@@ -90,11 +90,11 @@ If the cache is pre-populated, an additional temporary cache is created. The tem
 
 •	Formula for configured cache size (insert this number in configuration wizard):
 
-o	(Number of operating systems * 10 GB) + 20 GB
+    o	(Number of operating systems * 10 GB) + 20 GB
 
 •	Formula for used disk space (Many-to-one scenario)
 
-o	(Number of sources * <formula for configured cache size>)
+    o	(Number of sources * <formula for configured cache size>)
 
 **Examples:**
 
@@ -110,7 +110,12 @@ o	(Number of sources * <formula for configured cache size>)
 
     o	Used disk space: (5 sources * 60 GB) = 300 GB
 
+**VeeamWAN\Digests**
+
 Digest space must be built into the equation using the same size for each source target:
+
+Although the Digest folder is created on the target accelerator no data is stored on the target normally, however it must be sized into the target in case the digest on the source becomes corrupt or is missing. In this case the target will calculate its own digests in this location until the source WAN Accelerator comes back online.
+
 
 •	Example with one source and two operating systems
 
@@ -138,10 +143,6 @@ Note: The blob.bin file will exist for all connected source WAN accelerators.
 **VeeamWAN\GlobalCache\temp**
 
 When connecting a new source WAN accelerator, the temp folder will temporarily contain the data.veeamdrf file that is later transferred to the source containing the cache manifest.
-
-**VeeamWAN\Digests**
-
-Although the Digest folder is created on the target accelerator no data is stored on the target normally, however it must be sized into the target in case the digest on the source becomes corrupt or is missing. In this case the target will calculate its own digests in this location until the source WAN Accelerator comes back online.
 
 
 
