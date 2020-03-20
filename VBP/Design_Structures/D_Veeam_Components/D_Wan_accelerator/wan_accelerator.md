@@ -34,4 +34,24 @@ The I/O requirements for the source WAN accelerator spikes every time a new VM d
 
 **Disk Size**
 
+Source WAN accelerator stores only the digests of the processed VM OS data blocks in the *VeeamWAN* folder on the disk that you select when you configure the WAN accelerator. Disk digest file is created and placed in *\VeeamWAN\Digests\<JobId>_<VMId>_<DiskId>_<RestorePointID>.*
+
+Each digest file consumes up to 2% of its source VM disk size. VM disk size is calculated based on the allocated space, not used space. This means, for example, that a 2 TB VM disk file can produce digest files up to 40 GB in size.
+
+WAN accelerator keeps 2 copies of digest files for each processed VM disk  resulting from the previous session and current session. At the end of the session these 2 files are merged into 1. As we need to count for this, we will calculate 5% of source VM Disk size for digest files. 
+Additionally, plan for 10 GB of working space for payloads and other temporary files.
+
+•	Formula: Digests = <Source data size in GB> * 5% + 10 GB
+
+•	Example with 2 TB source data: (2,000 GB * 5 %)+ 10 GB = 110 GB
+
+**Note:** The cache size on the source WAN accelerator will always be ignored, the digest files will be produced regardless of cache size setting configured. They may consume considerable disk space. Even if configuring the cache size on a source WAN accelerator is not as important, it still must exist as a number. 
+Another folder created on the source WAN accelerator is  VeeamWAN\GlobalCache\src. The only file created in this directory is data.veeamdrf file. This file will be synchronized from the target WAN accelerator in following cases: 
+•	Source WAN Accelerator cache was manually cleared, or digests deleted
+•	There was not enough space on the source WAN accelerator
+•	It is the first session after enabling the WAN accelerator setting
+•	If the job was seeded /mapped
+The size of this file is typically up to 2% of the configured target cache size (see sizing target WAN); thus, it may take some time for the initial data transfer to begin
+
+
 ## References
