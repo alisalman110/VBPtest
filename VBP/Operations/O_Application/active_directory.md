@@ -19,7 +19,7 @@ When possible, it's recommended to backup the Domain Controller with most FSMO
 
 You can run netdom query fsmo to check with Domain Controller have which FSMO roles.
 
-Learn more about FSMO Roles (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement)
+Learn more about FSMO(https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement) Roles 
 
 ## Job configuration
 
@@ -29,7 +29,7 @@ For backup and restore of domain controllers to work properly application aware 
 
 After the restore, you might need to use ntdsutil seize command to transfer the FSMO roles, it's recommended to deploy mutiple domain controllers for high availability and redundancy. 
 
-More information about ntdsutil seize(https://support.microsoft.com/en-us/help/255504/using-ntdsutil-exe-to-transfer-or-seize-fsmo-roles-to-a-domain-control)
+More information about ntdsutil(https://support.microsoft.com/en-us/help/255504/using-ntdsutil-exe-to-transfer-or-seize-fsmo-roles-to-a-domain-control) seize
 
 ## Recovery verification
 
