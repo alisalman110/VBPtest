@@ -1,3 +1,12 @@
+
+---
+title: Analyzing WAN accelerators efficiency
+parent: Analyzing WAN accelerator workload
+grand_parent: 
+nav_order: 10
+---
+
+
 Operate 
 Primary backup job Mode 
 When used with Backup Copy job it is important to remember that Backup copy job works in forever incremental mode, transferring to the target repository only the differences between previous and current job cycles no matter what type of the backup file is in the primary repository: Full or Incremental. 
