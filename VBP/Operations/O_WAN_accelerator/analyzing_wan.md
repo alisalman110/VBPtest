@@ -1,7 +1,7 @@
 ---
 title: Analyzing WAN acceleration workload
-parent: 4-Operate
-grand_parent: Welcome
+parent: Analyzing WAN acceleration workload
+grand_parent: 4-Operate
 nav_order: 10
 ---
 
