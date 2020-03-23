@@ -1,5 +1,5 @@
 ---
-title: Enterprise Manager Restore operations
+title: Enterprise Manager Restore Operations
 parent: Enterprise Manager
 grand_parent: Veeam Components
 nav_order: 10
@@ -25,5 +25,8 @@ The process goes as follows:
 
 **Note:** This feature also works for backups from Veeam Agents for Windows stored on a Veeam Backup & Replication repository.
 
-For more information on using this feature refer to the [Self-Restore of VM Guest Files](https://helpcenter.veeam.com/docs/backup/em/em_self_restore.html)
-section of the Veeam Backup Enterprise Manager User Guide.
+## References
+
+* [Enterprise Manager user's guide](https://helpcenter.veeam.com/docs/backup/em/introduction.html)
+* [Self-service portal guide](https://helpcenter.veeam.com/docs/backup/em/em_working_with_vsphere_portal.html)
+* [Self-Restore of VM Guest Files](https://helpcenter.veeam.com/docs/backup/em/em_self_restore.html)
