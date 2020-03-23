@@ -9,11 +9,17 @@ nav_order: 20
 
 # Active Directory
 
-Veeam Backup and Replication natively supports backup of Microsoft Active Directory domain controllers and allows for image level and granular AD items restore.
+Veeam supports Application Aware backup of Active Directory for Virtual Machine and Physical Servers. 
 
 ## Preparation
 
 For Microsoft Active Directory, check the tombstone lifetime settings, as described in Veeam Explorers User Guide at Veeam Help Center (https://helpcenter.veeam.com/docs/backup/explorers/vead_recommendations.html?ver=95).
+
+When possible, it's recommended to backup the Domain Controller with most FSMO
+
+You can run netdom query fsmo to check with Domain Controller have which FSMO roles.
+
+Learn more about FSMO Roles (https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/planning-operations-master-role-placement)
 
 ## Job configuration
 
@@ -21,7 +27,9 @@ For backup and restore of domain controllers to work properly application aware 
 
 ## Restore and failover
 
-It is a good practice to implement redundant Active Directory configuration with several domain controllers which helps eliminate single point of failure. Depending on the Active Directory architecture it might make sense to rebuild domain controller that was lost instead of restoring it from the backup. One of such cases is if FSMO roles from the lost domain controller were seized on another one, then it is better to deploy a new VM instead of restoring a server which still thinks it is holding the role. Finally if you are redeploying, make sure all FSMO roles are being held by a controller and that you clean up the meta data of the controller that is not coming back.
+After the restore, you might need to use ntdsutil seize command to transfer the FSMO roles, it's recommended to deploy mutiple domain controllers for high availability and redundancy. 
+
+More information about ntdsutil seize(https://support.microsoft.com/en-us/help/255504/using-ntdsutil-exe-to-transfer-or-seize-fsmo-roles-to-a-domain-control)
 
 ## Recovery verification
 
