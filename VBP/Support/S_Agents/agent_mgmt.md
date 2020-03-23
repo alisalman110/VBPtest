@@ -1,6 +1,6 @@
 ---
-title: Agent Overview
-parent: Agent Management
+title: Agent Management
+parent: Agents
 grand_parent: Supplemental
 nav_order: 10
 ---
