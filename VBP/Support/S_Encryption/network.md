@@ -10,7 +10,7 @@ nav_order: 30
 Unlike the backup and tape job encryption features, the network transport encryption feature is designed to protect data "in-flight". For example, when the proxy is sending data across the network to the backup repository, data can be encrypted between these two points even if job-level encryption has not been enabled. This is primarily useful when the network between the source and target is not trusted, for example, when sending data across the Internet.
 
 ## How does it work?
-Network encryption in Veeam Backup & Replication is controlled via the global Network Traffic options.
+Network encryption in Veeam Backup & Replication is controlled via the global [Network Traffic Rules].
 
 ![Network Traffic Encryption](media/traffic_encryption.jpg)
 
@@ -33,9 +33,11 @@ By default, Veeam Backup & Replication automatically encrypts communication betw
 ----
 
 ## References
+- [Network Traffic Rules]
 - [IETF RFC 1918]
 - [How Veeam Cloud Connect Encryption works]
 
 <!-- referenced links -->
+[Network Traffic Rules]: https://helpcenter.veeam.com/docs/backup/vsphere/network_rules.html
 [IETF RFC 1918]: https://tools.ietf.org/html/rfc1918
 [How Veeam Cloud Connect Encryption works]: https://www.youtube.com/watch?v=yGuw37PxRHU

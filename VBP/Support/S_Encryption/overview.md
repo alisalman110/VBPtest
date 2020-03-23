@@ -12,14 +12,14 @@ The encryption technology in Veeam Backup & Replication allows to protect data b
 
 Veeam Backup Enterprise Manager additionally provides Password Loss Protection option that allows authorized Veeam users to recover data from the backup even if the encryption password is lost. If the password gets lost, the backup server will provide a challenge key for Enterprise Manager. Using asymmetric encryption with a public/private key pair, Enterprise Manager generates a response which the backup server can use for unlocking the backup file without having the password available. For more details on this feature, refer to the [corresponding section of the User Guide][Decrypting Data Without Password].
 
-The encryption algorithms used are industry standard in all cases, leveraging AES-256 and public key encryption methods. The [Data Encryption section of the User Guide][Data Encryption Standards] provides detailed information on the encryption algorithms and standards used by the product.
+The encryption algorithms used are industry standard in all cases, leveraging AES-256 and public key encryption methods. The [Data Encryption] section of the User Guide provides detailed information on the encryption algorithms and standards used by the product.
 
 ----
 
 ## References
 - [Decrypting Data Without Password]
-- [Data Encryption Standards]
+- [Data Encryption]
 
 <!-- referenced links -->
 [Decrypting Data Without Password]: https://helpcenter.veeam.com/docs/backup/vsphere/decrypt_without_pass.html
-[Data Encryption Standards]: https://helpcenter.veeam.com/docs/backup/vsphere/data_encryption.html
+[Data Encryption]: https://helpcenter.veeam.com/docs/backup/vsphere/data_encryption.html

@@ -11,7 +11,7 @@ Similar to [backup job encryption](./backup-and-copy-job-encryption.md), tape jo
 The typical use case is to protect data on tapes when media is shipped to an offsite or 3rd party location. Without encryption enabled, a lost tape could easily be accessed, and data stored on tapes could be compromised.
 
 ## How does it work?
-Similar to encryption for backups on disk, a session encryption key is used to encrypt data blocks as they are written to tape. Tape encryption can leverage either hardware tape encryption (if present and enabled) or software-based encryption. If the tape drive supports hardware encryption, the session key is sent to the tape device via SCSI commands and the drive itself performs the encryption prior to writing data to tape. This allows encryption to occur with no impact on the CPU of the tape server. If the tape hardware does not support encryption, Veeam falls back to using software-based AES-256 data encryption prior to sending data to the tape device.
+Similar to encryption for backups on disk, a session encryption key is used to encrypt data blocks as they are written to tape. Tape encryption can leverage either hardware tape encryption (if present and enabled) or software-based encryption. If the tape drive supports hardware encryption, the session key is sent to the tape device via SCSI commands and the drive itself performs the encryption prior to writing data to tape. This allows encryption to occur with no impact on the CPU of the tape server. If the tape hardware does not support encryption, Veeam falls back to using software-based AES-256 data encryption prior to sending data to the tape device (see also [Tape Encryption] in the User Guide).
 
 ## When to use it?
 Tape job encryption should be used any time you want to protect the data stored on tape from unauthorized access by a 3rd party. Tapes are commonly transported offsite and thus have a higher chance of being lost or stolen. Encrypting tapes can provide an additional layer of protection for such cases.
@@ -29,6 +29,8 @@ If tape jobs are writing already encrypted data to tape (for example, Veeam data
 
 ## References
 - [Decrypting Data Without Password]
+- [Tape Encryption]
 
 <!-- referenced links -->
 [Decrypting Data Without Password]: https://helpcenter.veeam.com/docs/backup/vsphere/decrypt_without_pass.html
+[Tape Encryption]: https://helpcenter.veeam.com/docs/backup/vsphere/encryption_tape.html

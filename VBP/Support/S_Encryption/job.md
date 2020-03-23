@@ -37,7 +37,9 @@ Active full backup is required for enabling encryption to take effect if it was 
 ## References
 - [Decrypting Data Without Password]
 - [Enterprise Manager Encryption Keys]
+- [Backup Job Storage Settings]
 
 <!-- referenced links -->
 [Decrypting Data Without Password]: https://helpcenter.veeam.com/docs/backup/vsphere/decrypt_without_pass.html
 [Enterprise Manager Encryption Keys]: https://helpcenter.veeam.com/docs/backup/em/em_manage_keys.html
+[Backup Job Storage Settings]: https://helpcenter.veeam.com/docs/backup/vsphere/backup_job_advanced_storage_vm.html
