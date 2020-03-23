@@ -1,7 +1,7 @@
 ---
 title: Microsoft SharePoint Server
 parent: Applications
-grand_parent: Operate
+grand_parent: 4-Operate
 nav_order: 50
 ---
 
@@ -13,6 +13,8 @@ nav_order: 50
 ## Job configuration
 
 For backup and restore of SharePoint servers to work properly application aware image processing option has to be enabled in the job properties. For more details refer to the [corresponding section](https://helpcenter.veeam.com/docs/backup/vsphere/backup_job_vss_vm.html?ver=95) of the User Guide. As SharePoint deployments may be spread across several servers make sure to familiarize yourself with the [Required Microsoft SharePoint Backup Job Settings section](https://helpcenter.veeam.com/docs/backup/explorers/vesp_bu_job_settings.html?ver=95) of the User Guide.
+
+To restore the data, it's improtant to backup the Sharepoint database along with the applications.
 
 ## Granular item restore
 
