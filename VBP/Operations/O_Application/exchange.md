@@ -23,3 +23,7 @@ For backup and restore of Exchange servers to work properly application aware im
 ## Granular item restore
 
 When mounting Exchange database Veeam Explorer for Exchange replays relevant log files which may significantly increase time needed for mount operation in case there is a lot of logs to replay. As lagged DAG technology relies on keeping lots of Exchange logs expect Veeam Explorer taking significant amount of time to mount EDBs when performing item restore from lagged DAG mailbox servers.
+
+## Exchange DAG Backup:
+
+It's recommended to take the Microsoft Exchange Database backup from DAG passive nodes to avoid any impact on the production environment.
