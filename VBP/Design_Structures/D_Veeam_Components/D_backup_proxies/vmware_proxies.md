@@ -1,13 +1,13 @@
 ---
 title: Proxy Server - VMware vSphere
-parent: Veeam Components Designs
-grand_parent: Design
+parent: Veeam Backup Proxies
+grand_parent: Veeam Components Designs
 nav_order: 20
 ---
 
 <!-- Taken from B_backup_proxies > README.md -->
 
-# Veeam VMware Backup Proxy 
+# Veeam VMware Backup Proxy
 
 Introduction and see link at bottom of page
 

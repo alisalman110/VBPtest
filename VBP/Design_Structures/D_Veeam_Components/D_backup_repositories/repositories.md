@@ -1,7 +1,7 @@
 ---
 title: Veeam Backup Repositories
-parent: Veeam Components Designs
-grand_parent: Design
+parent: Veeam Backup Repositories
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 

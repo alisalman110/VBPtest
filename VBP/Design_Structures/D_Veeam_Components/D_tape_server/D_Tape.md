@@ -1,8 +1,8 @@
 ---
 title: Tape infrastructure design
-parent: Veeam Components
-grand_parent: Design
-nav_order: 10
+parent: Veeam Tape Server
+grand_parent: Veeam Components Designs
+nav_order: 20
 ---
 
 #Tape Deployments

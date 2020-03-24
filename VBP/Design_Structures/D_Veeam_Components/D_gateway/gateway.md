@@ -1,7 +1,7 @@
 ---
 title: Veeam Gateway Server
-parent: Veeam Components Designs
-grand_parent: Design
+parent: Veeam Gateway Server
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 # Veeam Gateway Server

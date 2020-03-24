@@ -1,7 +1,7 @@
 ---
 title: Proxy Server - Hyper-V
-parent: Veeam Components Designs
-grand_parent: Design
+parent: Veeam Backup Proxies
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 
@@ -9,13 +9,13 @@ nav_order: 10
 
 Introduction and see link at bottom of page
 
-## Recommended configuration 
+## Recommended configuration
 
 On-host as opposed to off-host
 
 ## Proxy OS Requirements
 
-## Proxy Sizing 
+## Proxy Sizing
 
 Recommend referencing the sizing information in the VMware proxy section?
 
