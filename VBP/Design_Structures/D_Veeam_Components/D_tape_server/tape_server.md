@@ -1,7 +1,7 @@
 ---
-title: Veeam Tape Server
-parent: Veeam Components Designs
-grand_parent: 2-Design
+title: Veeam Tape Server Overview
+parent: Veeam Tape Server
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 
