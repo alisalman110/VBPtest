@@ -9,10 +9,90 @@ nav_order: 70
 
 # SAP HANA
 
+SAP HANA provides native tools to backup the SAP HANA database. These tools are available for SAP HANA users and backup vendors to use to take SAP HANA backup as per SAP standards.
+
 Veeam provides following options to protect SAP HANA Environment:
 
-- Virtual Machine running SAP HANA Database –  Agentless Virtual Machine Image Level Backup.
-- Physical Server running SAP HANA Database –  Agent based backup.
+- Virtual Machine running SAP HANA Database –  Veeam Agentless Virtual Machine Image Level Backup.
+- Physical Server running SAP HANA Database –  Veeam Agent based backup.
+- SAP HANA database Backup with backint      -  Veeam Plugin for SAP HANA
+
+# Backup Options and tools:
+
+SAP HANA provides native tools to backup and restore SAP HANA databases:
+
+- Backint API
+- File System Backup
+- HANA Snapshot (Storage Snapshot)
+
+
+### Backint API
+
+The Backint method is an API-based method — it’s generally referred to SAP HANA backup using a third-party utility.
+It enables 3rd party tool vendors to directly connect their backup agents to the SAP HANA database. Backups are
+transferred via pipe from the SAP HANA database to the 3rd party backup agent, which runs on the SAP HANA database
+server and then sends the backups to the 3rd party backup server.
+
+3rd party backup tools can be fully integrated with SAP HANA:
+• Execution of backup and recovery from the SAP HANA cockpit, SAP HANA studio and via SAP HANA SQL commands
+• Configuration of tool-specific parameters
+The Backint backup can be configured through these options:
+• Third-party backup application
+• Manually at HANA Studio
+• SQL Script (manual/external)
+• SAP DB Cockpit (external scheduler)
+The diagram below visualized the backup operations:
+1. SAP HANA database stores the in-memory data into persistence storage
+2. From the persistence storage, the third-party agent creates backup streams to the third-party backup target.
+3. Store the backup on third-part backup Storage
+
+
+Diagram   
+
+
+### File System BACKUP
+
+File System Backups protect complete data to a file. Also note that a File System Backup will put a load on the network
+and it is recommended to use shared backup storage so it can be available to all the nodes of the database.
+
+You must remember to monitor file system fill level during the backup.
+
+The File System Backups can be configured through these options:
+• Manually at HANA Studio
+• SQL Script (manual/external scheduler)
+• SAP DBA Cockpit (external scheduler)
+• Log backup can be set automatically
+
+The diagram below visualized the backup operations:
+1. SAP HANA database store the in-memory data into persistence storage
+2. From persistence storage File System Backup store the backup file to external storage
+
+# HANA Storage Snapshot
+
+Storage snapshots are the fastest option to safeguard the SAP HANA database without any performance overhead and
+impact The SAP HANA database must be online for storage snapshot backup.
+The diagram below visualized the backup operations:
+
+1. SAP HANA database stores the in-memory data into persistence storage
+2. Prepare for a storage snapshot by initiating the SAP HANA Snapshot. During this process, the internal database
+snapshot is created, and reflects a consistent database state at the point in time it is created in the file system.
+3. The storage snapshot is created based on the internal database snapshot
+4. Confirm the SAP HANA Snapshot
+
+*Note* The method is not supported on multi-tenant environment
+
+# Advantages and Disadvantages
+
+## Backint Backup
+
+|        Advantages            | Disadvantages | Backup Size  | Backup Duration |
+| ------                       | ------        | ------       |  ------         |
+|Integrity checks at block level      | Supported     | Supported    |
+|Integrated into existing data center infrastructure | Supported     | Supported    |
+| Backup tool offers additional features       | Not supported | Supported    |
+|For example, encryption or de-duplication |                     |             |
+|Backups are immediately available for recovery|                 |             |
+
 
 # SAP HANA Backup Options:
 
@@ -231,6 +311,16 @@ In event of database corruption or revert back the changes in the database, use 
 
 
 ![Figure 1.2](./HANA_Studio2.png)
+
+## SAP HANA Database Level Restore
+
+With the configured Veeam Plug-in for SAP HANA you can restore your databases from the backups that reside in the
+Veeam backup repository. All restore operations are performed in the SAP HANA side. To restore databases, you can use
+SAP HANA Cockpit, SAP HANA Studio, or SQL commands including scripts.
+
+Keep in mind that examples provided below are for demonstrating purposes only. To see the full restore
+functionality of SAP HANA tools,see the [SAP HANA Recovery](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/c3c66b63bb571014b3e5ad8618cda1ad.html)
+
 
 
 ## Instant VM Recovery
