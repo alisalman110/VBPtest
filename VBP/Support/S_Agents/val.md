@@ -1,8 +1,9 @@
 ---
-title: Veeam Agent for Linux
-parent: Agent Management
+title: Agent for Linux
+parent: Agents
 grand_parent: Supplemental
 nav_order: 30
+published: false
 ---
 
 # Veeam Agent for Linux

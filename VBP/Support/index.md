@@ -23,9 +23,9 @@ nav_order: 30
   * Instant VM Recovery
 
 #### Agents
-* Veeam Agent Management
-* Veeam Agent for Microsoft Windows
-* Veeam Agent for Linux
+* Agent Management
+* Agent for Microsoft Windows
+* Agent for Linux
 
 
 
