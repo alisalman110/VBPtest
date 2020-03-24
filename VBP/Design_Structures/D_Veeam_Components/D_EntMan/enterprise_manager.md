@@ -1,7 +1,7 @@
 ---
-title: Veeam Enterprise Manager
-parent: Veeam Components Designs
-grand_parent: Design
+title: Veeam Enterprise Manager Overview
+parent: Veeam Enterprise Manager
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 
@@ -21,11 +21,13 @@ If the environment includes a single instance of Backup & Replication you may no
 
 ## Enterprise Manager server Placement
 
-If possible, it is advised to install the Enterprise Manager server on the recovery site so it is directly available in case of Disaster revovery. 
+If possible, it is advised to install the Enterprise Manager server on the recovery site so it is directly available in case of Disaster revovery.
 
 ## Sizing Enterprise Manager server compute
 
-The Veeam Enteerprise Manager server will very rarely necessitate more than 8 cores and 16 GB of RAM. 
+The Veeam Enteerprise Manager server will very rarely necessitate more than 8 cores and 16 GB of RAM.
+
+If possible, it is advised to install the Enterprise Manager server on the recovery site so it is directly available in case of Disaster revovery.
 
 ## Sizing Enterprise Manager Catalog
 
@@ -44,26 +46,3 @@ Below is an example that summarizes the information above. The example is given 
 [Veeam backup Enterprise Manager Guide](https://helpcenter.veeam.com/docs/backup/em/introduction.html?ver=100)
 
 [Veeam Backup Catalogue](https://helpcenter.veeam.com/docs/backup/em/veeam_backup_catalog.html?ver=100)
-
-
-<!--
-# Veeam Enterprise Manager
-
-Introduction and see link at bottom of page
-
-## Enterprise Manager Placement 
-
-Information on the placement of Enterprise Manager.
-
-##  Enterprise Manager OS requirements
-
-OS requirements
-
-## Enterprise Manager Sizing
-
-Enterprise Manager base requirements, plus additional overheads for Self-service, API and multi-VBR. 
-
-Need to add info on the EM DB requirements.
-
-## References
--->
