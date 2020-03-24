@@ -2,7 +2,7 @@
 layout: default
 title: Veeam Backup Proxies
 parent: Veeam Components Designs
-grand_parent: Design
+grand_parent: 2-Design
 has_children: true
 has_toc: true
 nav_order: 20

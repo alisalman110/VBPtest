@@ -1,7 +1,7 @@
 ---
 title: WAN Accelerator
-parent: Veeam Components Designs
-grand_parent: Design
+parent: WAN Accelerator
+grand_parent: Veeam Components Designs
 nav_order: 10
 ---
 
