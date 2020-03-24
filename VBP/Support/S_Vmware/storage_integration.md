@@ -23,7 +23,8 @@ Based on the protocol used by the storage system underneath, a physical Veeam pr
 ## When to use
 
 Knowing that using backup from storage snapshot significantly reduces the time that the vSphere snapshot has to grow, as it is shown in the following picture:
-![](./media/storage_integration_snap_comparison.png)
+
+![Snapshot time comparison](./media/storage_integration_snap_comparison.png)
 
 Backup from storage snapshot is not always recommended as it increases the number of tasks that a backup job must go through before start processing data: a vSphere snapshot of all the VMs that are part of the job must be taken before creating the actual hardware snapshot.
 
@@ -33,11 +34,11 @@ To properly make a good use of this feature, we recommend using backup jobs base
 
 Scheduling also plays a crucial role when it comes to this backup mode: as mentioned above, since all the VM's have to be quiesced before creating the hardware snapshot, to guarantee a sustained throughput multiple backup jobs must run concurrently.
 
-![](./media/storage_integration_job_schedule.png)
+![Job schedule](./media/storage_integration_job_schedule.png)
 
 As it is shown in the picture above, jobs should start within an interval of 5 minutes one to the next and, in the advanced options, the option to limit the number of VMs to processed within a single hardware snapshot should be set to 10 or less (depending on how many concurrent jobs will run).
 
-![](./media/storage_integration_jop_options.png)
+![Job options](./media/storage_integration_jop_options.png)
 
 Limiting the number of VMs within an hardware snapshot is key to reduce the time in which the vSphere snapshot is open to a minimum thus reducing the impact on the VMs. Without this option enabled, the job will quiesce first all the VMs before creating the hardware snapshot and, if the job has to process an high number of VMs, the vSphere snapshot of the first ones processed may grow considerably.
 
@@ -51,4 +52,9 @@ Regardless the consistency of the snapshot, we do recommend to include snapshot-
 
 Also, applications like Microsoft SQL and Exchange can use these Snapshot only jobs to create a snapshot chain for fast recovery and increase the protection level by generating restore points, at a very low cost in terms of impact and consumed space, even outside the usual nightly backup window.
 
-![](./media/storage_integration_schedule.png)
+![BfSS job scehdule](./media/storage_integration_schedule.png)
+
+___
+
+## References
+
