@@ -2,7 +2,7 @@
 title: Replication Jobs
 parent: Veeam Replication Jobs
 grand_parent: Veeam Jobs
-nav_order: 20
+nav_order: 10
 ---
 
 # Replication Job
