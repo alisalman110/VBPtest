@@ -23,10 +23,9 @@ tags in vCenter. Classifications can be defined from CPU, RAM, VM naming convent
 
 ###  Container Based Jobs
 
-Adding resource pools, folders, datastores, or vSphere Tags (vSphere 5.5 and higher) to backup jobs makes backup management easier. New machines that are
-member of such constructs or containers are automatically included in the backup job, and machines removed from the container are immediately removed from
-job processing.
+Adding resource pools, folders, datastores, or vSphere Tags (vSphere 5.5 and higher) to backup jobs makes backup management easier. 
 
+New machines that are member of such constructs or containers are automatically included in the backup job, and machines removed from the container are immediately removed from job processing.
 Overlapping constructs may cause undesired results. For instance, when creating jobs based on datastores, VMs with disks residing on multiple datastores included in more than one backup job will cause the VM to be backed up in each job.
 
 <hr>

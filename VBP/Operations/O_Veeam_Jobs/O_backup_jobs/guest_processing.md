@@ -7,10 +7,8 @@ nav_order: 50
 
 # Application-Aware Image Processing / Guest Processing
 
-When configuring backup and replication jobs, you can specify how to create the
-transactionally-consistent backup images of VMs. Two methods are available for bringing VM file
-system and applications into consistent state: VMware Tools/Hyper-V Integration Services quiescence
-or Veeam's proprietary application-aware image processing (using Microsoft VSS or Linux scripts).
+When configuring backup and replication jobs, you can specify how to create the transactionally-consistent backup images of VMs. Two methods are available for bringing VM file system and applications into consistent state: VMware Tools/Hyper-V Integration Services quiescence or Veeam's proprietary application-aware image processing (using Microsoft VSS or Linux scripts).
+
 Key features of both methods are illustrated by the following table:
 
 | Feature                                                                           | VMware Tools Quiescence  | Hyper-V Quiescence    | Application-Aware Image Processing  |
@@ -48,9 +46,7 @@ For more details on the interaction check out [Anatomy - Guest Interaction](/ana
 
 ## Guest Access Credentials
 
-Depending on the VM guest OS processing options selected (enabled or disabled application-aware
-image processing) and on the guest access method, you may need to supply access credentials for the
-guest OS, as described in the tables below.
+Depending on the VM guest OS processing options selected (enabled or disabled application-aware image processing) and on the guest access method, you may need to supply access credentials for the guest OS, as described in the tables below.
 
 ### Windows OS
 
@@ -72,46 +68,31 @@ guest OS, as described in the tables below.
 
 ## Sizing
 
-Since guest processing produces very low impact on VM performance, no special considerations on
-sizing are required. If you use VSS processing with hypervisor quiescence or Veeam in-guest
-processing, you need free space on each drive of the VM for the software VSS snapshot. Please check
-Microsoft requirements for more information.
+Since guest processing produces very low impact on VM performance, no special considerations on sizing are required. If you use VSS processing with hypervisor quiescence or Veeam in-guest processing, you need free space on each drive of the VM for the software VSS snapshot. Please check Microsoft requirements for more information.
 
 ## File Exclusions
-Another operation Veeam Backup can do on guest OS level (NTFS only) is excluding certain files or
-folders from the backup. Alternatively the job can be configured to include only specified files or
-folders in the backup.
 
-This functionality operates very similarly and shares a lot of characteristics with excluding
-Windows page file and deleted file blocks. It may help reduce size of the backup files or implement
-additional data protection strategies for specific data. Backups for which this option was enabled
-remain image-level and hypervisor APIs are used to retrieve VM data. File exclusion feature uses a
-combination of NTFS MFT data and guest file system indexes collected by in-guest coordination
-process to determine which virtual disk blocks belong to the excluded files and thus should not be
-included in the backup.
+Another operation Veeam Backup can do on guest OS level (NTFS only) is excluding certain files or folders from the backup. Alternatively the job can be configured to include only specified files or folders in the backup. This functionality operates very similarly and shares a lot of characteristics with excluding Windows page file and deleted file blocks. It may help reduce size of the backup files or implement additional data protection strategies for specific data. Backups for which this option was enabled
+remain image-level and hypervisor APIs are used to retrieve VM data.
 
-Full file/folder paths, environment variables or file masks can be used to define exclusions. For
-more details on configuring exclusions and its limitations refer to the corresponding
+File exclusion feature uses a combination of NTFS MFT data and guest file system indexes collected by in-guest coordination process to determine which virtual disk blocks belong to the excluded files and thus should not be included in the backup.
+
+Full file/folder paths, environment variables or file masks can be used to define exclusions. For more details on configuring exclusions and its limitations refer to the corresponding
 [User Guide section](https://helpcenter.veeam.com/docs/backup/vsphere/guest_file_exclusion.html).
 
-**Note**: Generic file exclusions (defined for high level folders) are most effective. File masks
-exclusions require guest file system indexes and generating indexes may put additional stress on
-guest VM and will increase backup time. For this reason it is recommended to avoid using file system
-masks especially on fileservers with large number (thousands) of small files and use high level
-folder exclusions instead. When using include filters, file exclusions are created for everything
-else and can take significant time.
+**Note**: Generic file exclusions (defined for high level folders) are most effective. File masks exclusions require guest file system indexes and generating indexes may put additional stress on guest VM and will increase backup time. For this reason it is recommended to avoid using file system masks especially on fileservers with large number (thousands) of small files and use high level folder exclusions instead. When using include filters, file exclusions are created for everything else and can take significant time.
 
 ---
 
 [^1]: Local administrator accounts other than the built-in Administrator account may not have rights to manage a server remotely, even if remote management is enabled. The remote User Account Control (UAC) `LocalAccountTokenFilterPolicy` registry setting must be configured on the VM guest to allow local accounts of the Administrators group other than the built-in administrator account to remotely manage the server:
 
-    |       |                                                                                                    |
-    | ----: | -------------------------------------------------------------------------------------------------- |
-    |  Path | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`                     |
-    |   Key | `LocalAccountTokenFilterPolicy`                                                                    |
-    |  Type | REG_DWORD (32-bit)                                                                                 |
-    | Value | **`1`** = _disable token filter and **allow** remote management by local administrative accounts_  |
-    |       | **`0`** (default) = _enable token filter and **do not allow** remote management by local accounts_ |
+|       |                                                                                                    |
+| ----- | -------------------------------------------------------------------------------------------------- |
+|  Path | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`                     |
+|   Key | `LocalAccountTokenFilterPolicy`                                                                    |
+|  Type | REG_DWORD (32-bit)                                                                                 |
+| Value | **`1`** = _disable token filter and **allow** remote management by local administrative accounts_  |
+|       | **`0`** (default) = _enable token filter and **do not allow** remote management by local accounts_ |
 
 [^2]: Only this account is able to bypass the UAC prompt for launching processes with administrative privileges. If not applicable, see [^3].
 

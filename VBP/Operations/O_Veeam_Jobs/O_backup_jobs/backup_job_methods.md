@@ -1,12 +1,12 @@
 ---
 title: Backup Job Methods
-parent: Veeam Backup Jobs
-grand_parent: Veeam Jobs
+<<<<<<< VBP/Operations/O_Veeam_Jobs/O_backup_jobs/backup_job_methods.md
+parent: Veeam Jobs
+grand_parent: 4-Operate
 nav_order: 20
 ---
 
 # Backup Methods
-
 
 ## Forward Incremental Usage
 
@@ -21,7 +21,6 @@ Forward incremental backup provides good performance with almost any storage and
 | Recommended for deduplication appliances that use SMB or NFS protocols.                             | When backup window does not allow enough time for re-reading all of the source VM data.                             |
 | On storage systems that use software or non-caching RAID hardware such as many low-end NAS devices. | For large or performance sensitive VMs where re-reading the data can have a negative impact on the VMs performance. |
 
-
 ## Synthetic Full Usage
 
 Due to the way synthetic full works, having many smaller backups jobs with fewer VMs will allow for faster synthetic full operations. Keep this in mind when setting up jobs that will use this method or choose to use Per VM Backup Files.
@@ -30,7 +29,6 @@ Due to the way synthetic full works, having many smaller backups jobs with fewer
 | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | When repository storage uses fast disks with caching RAID controllers and large stripes.                  | Small NAS boxes with limited spindles that depend on software RAID. |
 | Deduplication appliances that support offloading synthetic operations (DataDomain, StoreOnce and ExaGrid) | Deduplication appliances that use SMB or NFS protocols.             |
-
 
 ## Forever Incremental Usage
 
@@ -51,7 +49,6 @@ merge process. Very large jobs can experience significant increase in time due t
 | Repositories with good performance | Smaller backup repositories or NAS devices with limited spindles and cache |
 | Ideal for VMs with low change rate | Jobs with significant change rate may take a long time to merge            |
 
-
 ## Reverse Incremental Usage
 
 | Use                                                                                         | Don’t Use                                                 |
@@ -67,6 +64,7 @@ merge process. Very large jobs can experience significant increase in time due t
 ## Backup Job I/O Processes
 
 ### Overview
+
 Veeam Backup & Replication stores backups on disk using a simple, self-contained file based approach. However, there are several methods to create and store those files on the file system. This section will provide an overview of these methods, their pros and cons, as well as recommendations on use cases for each one.
 
 Backup mode directly influences disk I/O on both production storage and backup repository, and backups size; for these reasons it is recommended to carefully review capabilities of the destination storage when selecting one.
@@ -81,10 +79,8 @@ As a generic overview for I/O impact of the backup modes, please see this table:
 | Forward incremental, synthetic full        | 2 x I/O (1x read, 1x write) for entire backup chain     |
 | Reversed incremental                       | 3 x I/O (1x read, 2x write) for incremental backup size |
 | Synthetic full with transform to rollbacks | 4 x I/O (2x read, 2x write) for entire backup chain     |
-| | |
 
 While changing backup mode is one way of reducing amount of I/O on backup repository it is also possible to leverage features of the filesystem to avoid extra I/O. Currently Veeam Backup and Replication supports advanced features of one filesystem, Microsoft ReFS 3.1 (available in Windows Server 2016), to completely eliminate unnecessary read/write operations in certain configurations. For more details refer to the corresponding section of this guide.
-
 
 ### Merge I/O Process
 
@@ -114,7 +110,6 @@ This can be especially noticeable for VMs with a high change rate, or when runni
 <!-- References -->
 
 <hr>
-
 
 ## References
 

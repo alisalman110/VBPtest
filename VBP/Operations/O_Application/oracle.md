@@ -14,6 +14,8 @@ Veeam Backup and Replication natively supports backup of Oracle database servers
 
 **Note:** 32-bit Oracle instances on 64-bit Linux and Oracle RAC are not supported using regular VM backup jobs or Veeam Agents. However, Veeam Plug-in for Oracle RMAN does support Oracle RAC environments following the considerations [here](https://helpcenter.veeam.com/docs/backup/plugins/oracle_environment_planning.html#rac).
 
+## Oracle Image-Level backup
+
 ## Preparation
 
 Only databases in ARCHIVELOG mode will be backed up online, databases in NOARCHIVELOG mode will be shut down which will cause **database availability disruption**.
@@ -54,7 +56,50 @@ Refer to the corresponding section of the User Guide (https://helpcenter.veeam.c
 
 Avoid using aggressive logs truncation settings for databases protected with Data Guard as it may affect logs synchronization to secondary server. Data Guard should have enough time to transport logs remotely before they are truncated thus generally having "Delete logs older than" option less than 24 hours is not recommended.
 
+## Veeam Plugin for Oracle RMAN
+
+Veeam provides integration with Oracle RMAN to take consistency backup of Oracle environment with RMAN by using SBT_TAPE APIs to write the backup on Veeam Backup & Replication Repository.
+
+## Preparation
+
+## Oracle Enviroment
+
+Veeam performs SQL queries on Oracle database to collect the statistical information about the RMAN job process, based on available resources Oracle can decide to use Temp Tablespace resources, it’s best practice to configure the Temp Tablespace resources to avoid shortage of Temporary tablespace.
+You can check the Temp Tablespace size with the below SQL query:
+
+### Oracle Version 12:
+
+SELECT * FROM DBA_TEMP_FREE_SPACE;
+
+### Oracle Version 11:
+
+SELECT   A.tablespace_name tablespace, D.mb_total,
+
+You can also create new temp tablespace, for example the new tablespace for 500 M:
+
+CREATE TEMPORARY TABLESPACE TEMP_NEW TEMPFILE '/DATA/database/ifsprod/temp_01.dbf' SIZE 500m autoextend on next 10m maxsize unlimited;
+
+ALTER DATABASE DEFAULT TEMPORARY TABLESPACE TEMP_NEW;
+
+## Oracle RAC:
+
+Before starting the configuration of Veeam Plugin for Oracle RMAN, It's recommended to check the Oratab file, Oratab file should have entries about all the Oracle RAC nodes, if any node is missing please add that in oratab file.
+
+As a best practice, it’s recommended to install Veeam Pugin for RMAN on all Oracle RAC nodes.
+
+### Oracle Home
+
+It’s recommended to backup Oracle Home along with Oracle RMAN backup, to backup the Oracle Home, you can use Veeam Agent or Veeam backup & replication.
+
+## Veeam Environment:
+
+It’s recommended to use separate backup repository for Oracle RMAN backup, The following resources are required:
+
+Oracle server: 1 CPU core and 200 MB of RAM per currently used channel.
+Backup repository server: 1 CPU core and 1 GB of RAM per 5 currently used channels. 
+
 
 ## Additional information
 
 * [Oracle backup and restore workflows](../../anatomy/applications/oracle.md)
+

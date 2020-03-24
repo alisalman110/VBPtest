@@ -1,21 +1,16 @@
 ---
 title: Veeam Backup Jobs
-parent: Veeam Jobs
-nav_order: 10
+<<<<<<< VBP/Operations/O_Veeam_Jobs/O_backup_jobs/index.md
+parent: 4-Operate
+nav_order: 30
 has_toc: true
 has_children: true
 ---
 
-#### Veeam Jobs
-  * Backup Job
-   * Backup Methods
-   * Backup Job Storage
-   * Guest Processing
-   * Backup Job Automation
-  * Backup Copy Job
-  * Replication Job
-    * Replication
-    * Replication Workload
-    * Replication Extras
-  * Tape Backup Job
-    * Configuring Backup to tape
+## Veeam Jobs
+
+* Backup Job
+  * Backup Methods
+  * Backup Job Storage
+  * Guest Processing
+  * Backup Job Automation
